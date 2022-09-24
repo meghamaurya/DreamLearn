@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { GlobalStyle } from './GlobalStyle'
 import Navbar from './Navbar/Navbar'
+import Footer from './Component/Footer'
 import Home from './Pages/Home'
 import Learn from './Pages/Learn'
 
@@ -38,6 +39,7 @@ const App = () => {
           <Route path='/' element={<Home />} />
           <Route path='/learn' element={<Learn />} />
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </ThemeProvider>
   )
