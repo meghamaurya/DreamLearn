@@ -1,0 +1,40 @@
+[
+    {
+      "id": 1,
+      "title": "Online Classes",
+      "image": "./images/online-class.jpg",
+      "description": "something about Iphone"
+    },
+    {
+      "id": 2,
+      "title": "Indian Instruments",
+      "image": "https://i0.wp.com/asmusicworld.com/wp-content/uploads/2020/08/12-e1538115961516.jpg?w=644ssl=1",
+      "description": "something about Nokia"
+    },
+    {
+      "id": 3,
+      "title": "Western Instruments",
+      "image": "./images/western-instruments.png",
+      "description": "something about Motorola"
+    },
+    {
+      "id": 4,
+      "title": "Notations and History",
+      "image": "./images/notations.jpg",
+      "description": "know detail "
+    },
+    {
+      "id": 5,
+      "title": "Practice",
+      "image": "./images/flute-practice.jpg",
+      "description": "Practice improve your skills"
+    },
+    {
+      "id": 6,
+      "title": "Fun Quiz",
+      "image": "https://ytimg.googleusercontent.com/vi/tb0gHAzpQPE/maxresdefault.jpg",
+      "description": "Enjoy learning with fun quiz"
+    }
+    
+  ]
+  
