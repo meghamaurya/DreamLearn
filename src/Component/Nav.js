@@ -24,6 +24,9 @@ function Nav() {
             <p>
               This is my Paragraph
             </p>
+            <p>
+              This is another paragraph
+            </p>
           </div>
         </div>
     </div>
