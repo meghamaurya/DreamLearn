@@ -1,7 +1,7 @@
 import React from 'react';
 const Cards = (props) => {
-    const card = props.card;
-    console.log(props)
+    const card = props.cards;
+    // console.log(props)
     return (
         <>
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  h-screen place-items-center max-w-[1250px] mx-auto'>

@@ -5,6 +5,7 @@ const Home = () => {
     return (
         <div>
             <Cards cards={card} />
+            <Cards cards={card} />
         </div>
     )
 }
