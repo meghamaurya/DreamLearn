@@ -2,6 +2,10 @@ import React from 'react'
 
 function Footer() {
   return (
+    <div className='flex h-96 bg-slate-500 justify-items-end'>
+     <p className='flex text-purple-500  text-bold h-9'>
+        This is my Paragraph  
+     </p>
     <div className=" text-center fixed inset-x-0 bottom-0 justify-end">
         <footer className=" p-4 bg-white  shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-purple-900 ">
 
@@ -31,6 +35,7 @@ function Footer() {
             </a>
             </div>
 </footer>
+    </div>
     </div>
   )
 }

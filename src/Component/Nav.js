@@ -7,7 +7,7 @@ function Nav() {
           <nav className="sticky top-0 flex px-6 py-4 bg-purple-900 text-white justify-between">
             <div className="flex px-4 space-x-3">
             <img
-              src="https://thumbs.dreamstime.com/z/music-note-including-musical-instruments-vector-black-white-background-77100562.jpg"
+              src="./MusicL.png"
               className="h-16 rounded-lg cursor-pointer"
               alt="Dream Learn Logo"
             ></img>
@@ -20,6 +20,11 @@ function Nav() {
             </ul>
             </div>
           </nav>
+          <div>
+            <p>
+              This is my Paragraph
+            </p>
+          </div>
         </div>
     </div>
   );
