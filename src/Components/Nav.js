@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from 'react-router-dom';
 function Nav() {
   return (
     <div className="Nav">
@@ -15,8 +15,8 @@ function Nav() {
         </div>
         <div>
           <ul className=" flex  sm:mt-0 items-center py-4 space-x-10 px-28 text-3xl ">
-            <li className="font-bold cursor-pointer mx-2  ">Home</li>
-            <li className="font-bold cursor-pointer">Learn</li>
+            <Link to="/" className="font-bold cursor-pointer mx-2  ">Home</Link>
+            <Link to="/learn" className="font-bold cursor-pointer">Learn</Link>
           </ul>
         </div>
       </nav>
