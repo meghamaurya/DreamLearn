@@ -1,7 +1,7 @@
 import React from 'react'
 import Carousel from '../Hero Section/Carousel'
 
-const Login = () => {
+const Signin = () => {
   return (
     <div>
       <section className="h-screen max-w-[1250px] mx-auto">
@@ -124,4 +124,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Signin
