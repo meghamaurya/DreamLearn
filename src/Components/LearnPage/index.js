@@ -15,7 +15,7 @@ const Learn = () => {
         <div>
             <h3>Demo Classes</h3>
             {demoClass.map((data) => {
-                const { id, userName, bio, video } = data;
+                const { id, userName, bio } = data;
                 return (
                     <div key={id}>
                         <h2>{userName}</h2>
