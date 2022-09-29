@@ -5,22 +5,24 @@ function Footer() {
     
       <div className=" text-center fixed left-0 bottom-0 inset-x-0 justify-end">
         <footer className=".shadow-2xl md:flex md:items-center md:justify-between md:p-6 bg-purple-900 ">
+          <div className="flex max-w-[1250px] mx-auto space-between ">
           <ul className="flex flex-wrap items-center mt-3 text-sm font-bold text-white sm:-mt-0.5 ">
             <li>
-              <a href="/" className="mr-4 hover:underline md:mr-6 text-2xl ">
+              <a href="/" className="mr-4 hover:underline md:mr-6 text-xl ">
                 About Us
               </a>
             </li>
             <li>
-              <a href="/" className="mr-4 hover:underline md:mr-6 text-2xl">
+              <a href="/" className="mr-4 hover:underline md:mr-6 text-xl">
                 Contact Us
               </a>
             </li>
-            <li>
-              <a href="/" className="hover:underline text-2xl">
+            {/* If need in the future then we will be use this. */}
+            {/* <li>
+              <a href="/" className="hover:underline text-xl">
                 Privacy Policy
               </a>
-            </li>
+            </li> */}
           </ul>
           <div className="flex mt-4 space-x-6 sm:justify-center md:mt-0">
             <a
@@ -57,7 +59,7 @@ function Footer() {
                   clipRule="evenodd"
                 />
               </svg>
-              <span className="sr-only">Instagram page</span>
+              <span className="sr-only ">Instagram page</span>
             </a>
             <a
               href="https://twitter.com"
@@ -73,8 +75,10 @@ function Footer() {
               </svg>
               <span className="sr-only">Twitter page</span>
             </a>
+                </div>
           </div>
         </footer>
+        
       </div>
   );
 }
