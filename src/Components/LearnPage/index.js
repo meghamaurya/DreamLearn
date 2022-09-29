@@ -16,13 +16,13 @@ const Learn = () => {
     }, [])
     return (
         <div className="max-w-[1250px] mx-auto">
-            <h3 className='text-center mt-8 text-3xl'>Demo Classes</h3>
+            <h3 className='text-center mt-8 text-3xl  text-purple-900 shadow-md shadow-purple-300'>Demo Classes</h3>
             {demoClass.length === 0 && loading ? (
-                <h1 className='text-2xl text-center mt-6'>loading...</h1>) :
+                <h1 className='text-2xl text-center mt-6 text-purple-900'>loading...</h1>) :
                 (demoClass.map((data) => {
                     const { id, userName, bio, video } = data;
                     return (
-                        <div key={id} className=' grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 m-4 mt-16'>
+                        <div key={id} className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 m-4 mt-16'>
                             <div className="inline-block w-80 h-56 overflow-hidden object-cover rounded-lg shadow-lg shadow-purple-500 mb-10" >
                                 <ReactPlayer controls url={video} width="100%" height="85%" />
                                 <div className='flex place-content-between text-gray-800 text-md items-center  m-1'>
