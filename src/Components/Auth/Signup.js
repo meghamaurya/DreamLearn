@@ -75,45 +75,45 @@ function Signup() {
                 >
                     <p className="text-center font-semibold mx-4 mb-0">Or</p>
                 </div>
-                <div className='form-group'>
+                <div className='mb-4'>
                     <input
                         placeholder='Username'
                         name='username'
                         type="text"
                         {...register('username')}
-                        className={`text-purple-900 ${errors.username ? 'is-invalid' : ''}`} />
-                    <div className='invalid-feedback'>{errors.username?.message}</div>
+                        className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.username ? 'text-red' : ''}`} />
+                    <div className='text-red'>{errors.username?.message}</div>
                 </div>
 
-                <div className="border-purple-700">
+                <div className=" mb-4">
                     <input
                         placeholder='Email'
                         name="email"
                         type="text"
                         {...register('email')}
-                        className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+                        className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.email ? 'is-invalid' : ''}`}
                     />
                     <div className="invalid-feedback">{errors.email?.message}</div>
                 </div>
 
-                <div className="form-group textField col-5">
+                <div className="mb-4">
                     <input
                         placeholder='Password'
                         name="password"
                         type="password"
                         {...register('password')}
-                        className={`form-control ${errors.password ? 'is-invalid' : ''}`}
+                        className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.password ? 'is-invalid' : ''}`}
                     />
                     <div className="invalid-feedback">{errors.password?.message}</div>
                 </div>
 
-                <div className="form-group textField col-5">
+                <div className="mb-4">
                     <input
                         placeholder='Confirm Password'
                         name="confirmPassword"
                         type="password"
                         {...register('confirmPassword')}
-                        className={`form-control ${errors.confirmPassword ? 'is-invalid' : ''
+                        className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.confirmPassword ? 'is-invalid' : ''
                             }`}
                     />
                     <div className="invalid-feedback">
@@ -122,7 +122,7 @@ function Signup() {
                 </div>
 
                 <div className='form-group'>
-                    <button type='submit' className='btn bg-purple-900 text-white p-1 rounded-md shadow-md hover:bg-white hover:text-purple-900 hover:font-semibold shadow-purple-300 hover:shadow-purple-900 hover:shadow-md '>Register</button>
+                    <button type='submit' className='btn bg-purple-900 text-white p-1 rounded-md shadow-md hover:bg-white hover:text-purple-900 hover:font-semibold shadow-purple-300 hover:shadow-purple-900 hover:shadow-md '>Sign Up</button>
                 </div>
             </form>
         </div>
