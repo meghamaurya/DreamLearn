@@ -11,7 +11,7 @@ function App() {
       <BrowserRouter>
         <Nav />
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route exact path='/' element={<Home />} />
           <Route path='/learn' element={<Learn />} />
         </Routes>
         <Comp />
