@@ -17,6 +17,7 @@ const Learn = () => {
     return (
         <div className="max-w-[1250px] mx-auto">
             <h3 className='text-center mt-8 text-3xl  text-purple-900 shadow-md shadow-purple-300'>Demo Classes</h3>
+
             {demoClass.length === 0 && loading ? (
                 <div class="text-center">
                     <div role="status">
