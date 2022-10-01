@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom';
 function Nav() {
   return (
-    <div className="sticky top-0 ">
+    <div className="sticky top-0 z-10  ">
       <div className="container-fluid">
         <nav className="flex items-center py-1 bg-purple-900 text-white justify-between ">
           <div className="flex px-0 -space-x-0.5 container-fluid ">

@@ -5,14 +5,18 @@ import Footer from './Components/Nav&Footer/Footer';
 import Home from './Components/HomePage';
 import Learn from './Components/LearnPage';
 import Comp from './Components/Nav&Footer/Comp'
+import SignIn from './Components/SignIN/SignIn';
+import SignUp from './Components/SignIN/SignUp';
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Nav />
         <Routes>
-          <Route exact path='/' element={<Home />} />
+          <Route path='/' element={<Home />} />
           <Route path='/learn' element={<Learn />} />
+          <Route path='/signin' element={<SignIn />} />
+          <Route path='/signup' element={<SignUp />} />
         </Routes>
         <Comp />
         <Footer />

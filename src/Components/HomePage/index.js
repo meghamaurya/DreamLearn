@@ -1,13 +1,11 @@
 import React from 'react'
 import Cards from '../Cards'
 import card from '../Cards/cards.json';
-import Signup from '../Auth/Signup';
-import Signin from '../SignIN/index'
+import SignUp from '../SignIN/SignUp';
 const Home = () => {
     return (
         <div>
-            <Signup />
-            <Signin />
+            <SignUp />
             <Cards cards={card} />
         </div>
     )
