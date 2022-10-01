@@ -1,12 +1,19 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import Carousel from "../Hero Section/Carousel"
+import AuthService from "../Auth/auth.service";
 
 
 function SignUp() {
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const navigate = useNavigate('');
+
   const validationSchema = Yup.object().shape({
     username: Yup.string().required('**Username is required'),
     email: Yup.string().required('**Email is required'),
@@ -16,8 +23,23 @@ function SignUp() {
       .oneOf([Yup.ref('password'), null], '**confirm password does not match')
   });
 
-  const onSubmit = data => {
+  const onSubmit = async (data, e) => {
     console.log(JSON.stringify(data, null, 2))
+    e.preventDefault();
+    try {
+      await AuthService.signup(username, email, password, confirmPassword).then(
+        (response) => {
+          console.log('succuessfully sign up', response);
+          // navigate('/learn');
+          // window.location.reload();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const {
@@ -93,6 +115,8 @@ function SignUp() {
                 name='username'
                 type="text"
                 {...register('username')}
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.username ? 'text-red' : ''}`} />
               <div className='text-red-600 font-semibold'>{errors.username?.message}</div>
             </div>
@@ -103,6 +127,8 @@ function SignUp() {
                 name="email"
                 type="text"
                 {...register('email')}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.email ? 'is-invalid' : ''}`}
               />
               <div className="text-red-600 font-semibold">{errors.email?.message}</div>
@@ -114,6 +140,8 @@ function SignUp() {
                 name="password"
                 type="password"
                 {...register('password')}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.password ? 'is-invalid' : ''}`}
               />
               <div className="text-red-600 font-semibold">{errors.password?.message}</div>
@@ -125,6 +153,8 @@ function SignUp() {
                 name="confirmPassword"
                 type="password"
                 {...register('confirmPassword')}
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
                 className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.confirmPassword ? 'is-invalid' : ''
                   }`}
               />
