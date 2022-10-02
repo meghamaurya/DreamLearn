@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Nav from './Components/Nav&Footer/Nav';
 import Footer from './Components/Nav&Footer/Footer';
 import Home from './Components/HomePage';
@@ -26,8 +26,10 @@ function App() {
       <BrowserRouter>
         <Nav currentUser={currentUser} />
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route exact path='/' element={<Home />} />
           <Route path='/learn' element={<Learn />} />
+          <Route path='/learn' element={<Learn />} />
+          {/* <Route path='/learn' element={currentUser ? <Learn /> : <Navigate to="/"/>} /> */}
           <Route path='/signin' element={<SignIn />} />
           <Route path='/signup' element={<SignUp />} />
         </Routes>
