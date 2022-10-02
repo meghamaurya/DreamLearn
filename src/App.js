@@ -7,11 +7,24 @@ import Learn from './Components/LearnPage';
 import Comp from './Components/Nav&Footer/Comp'
 import SignIn from './Components/SignIN/SignIn';
 import SignUp from './Components/SignIN/SignUp';
+import AuthService from './Components/Auth/auth.service';
+import { useEffect, useState } from 'react';
 function App() {
+  const [currentUser, setCurrentUser] = useState(undefined);
+  useEffect(() => {
+    const user = AuthService.getCurrentUser();
+    if (user) {
+      setCurrentUser(user);
+    }
+  }, []);
+
+  // const logOut = () => {
+  //   AuthService.logout();
+  // }
   return (
     <div className="App">
       <BrowserRouter>
-        <Nav />
+        <Nav currentUser={currentUser} />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/learn' element={<Learn />} />
