@@ -6,22 +6,27 @@ import { Link, useNavigate } from 'react-router-dom';
 import Carousel from "../Hero Section/Carousel";
 import AuthService from "../Auth/auth.service";
 
-function SignIn() {
-    const [email, setemail] = useState('');
+function SignIn(learner) {
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
     const validationSchema = Yup.object().shape({
-        email: Yup.string().required('**Email is required'),
+        username: Yup.string().required('**Username is required'),
         password: Yup.string().required('**Password is required')
     });
+
 
     const onSubmit = async (data, e) => {
         console.log(JSON.stringify(data, null, 2))
         e.preventDefault();
         try {
-            await AuthService.signin(email, password).then(
+            await AuthService.signin(username, password).then(
                 () => {
-                    navigate("/learn");
+                    if (learner) {
+                        navigate('/home')   //learner home 
+                    } else {
+                        navigate('/educator')   //educator home
+                    }
                     window.location.reload();
                 },
                 (error) => {
@@ -101,15 +106,15 @@ function SignIn() {
 
                         <div className=" mb-4">
                             <input
-                                placeholder='Email'
-                                name="email"
+                                placeholder='username'
+                                name="username"
                                 type="text"
-                                {...register('email')}
-                                value={email}
-                                onChange={(e) => setemail(e.target.value)}
-                                className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.email ? 'is-invalid' : ''}`}
+                                {...register('username')}
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                                className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.username ? 'is-invalid' : ''}`}
                             />
-                            <div className="text-red-600 font-semibold">{errors.email?.message}</div>
+                            <div className="text-red-600 font-semibold">{errors.username?.message}</div>
                         </div>
 
                         <div className="mb-4">
