@@ -1,12 +1,12 @@
 import './App.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import Nav from './Components/Nav&Footer/Nav';
-import Footer from './Components/Nav&Footer/Footer';
+import Nav from './Components/NavFooter/Nav';
+import Footer from './Components/NavFooter/Footer';
 import Learner from './Components/HomePage/Learner';
 import Educator from './Components/HomePage/Educator';
 import LandingPage from './Components/LandingPage';
-import Comp from './Components/Nav&Footer/Comp'
+import Comp from './Components/NavFooter/Comp'
 import SignIn from './Components/SignIN/SignIn';
 import SignUp from './Components/SignIN/SignUp';
 import Home from './Components/HomePage';
