@@ -11,6 +11,8 @@ import SignIn from './Components/SignIN/SignIn';
 import SignUp from './Components/SignIN/SignUp';
 import Home from './Components/HomePage';
 import AuthService from './Components/Auth/auth.service';
+import Dropdown from './Components/DropdownBar/dApi';
+import Instrument from './Components/Instrument';
 function App() {
   const [learner, setLearner] = useState(false);
   const [educator, setEducator] = useState(false);
@@ -33,11 +35,13 @@ function App() {
         <Nav
           currentUser={currentUser}
           learner={learner} educator={educator} />
+        <Dropdown />
         <Routes>
           <Route path='/home' element={<Home />} />
           <Route exact path='/' element={isSignin ? '' : <LandingPage setIsSignin={setIsSignin} />} />
           <Route path='/learner' element={learner ? <Learner /> : <Navigate to="/" />} />
           <Route path='/educator' element={educator ? <Educator /> : <Navigate to="/" />} />
+          <Route path='/instruments/:instrument' element={<Instrument />} />
           <Route path='/signin' element={<SignIn learner={learner} />} />
           <Route path='/signup' element={<SignUp />} />
         </Routes>
