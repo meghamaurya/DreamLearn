@@ -13,6 +13,7 @@ import Home from './Components/HomePage';
 import AuthService from './Components/Auth/auth.service';
 import Dropdown from './Components/DropdownBar/dApi';
 import Instrument from './Components/Instrument';
+import Register from './Components/Register';
 function App() {
   const [learner, setLearner] = useState(false);
   const [educator, setEducator] = useState(false);
@@ -42,6 +43,8 @@ function App() {
           <Route path='/learner' element={learner ? <Learner /> : <Navigate to="/" />} />
           <Route path='/educator' element={educator ? <Educator /> : <Navigate to="/" />} />
           <Route path='/instruments/:instrument' element={<Instrument />} />
+          {/* <Route path='/instruments/:register' element={<Register />} /> */}
+          <Route path='/instruments/:instrument/:register' element={<Register />} />
           <Route path='/signin' element={<SignIn learner={learner} />} />
           <Route path='/signup' element={<SignUp />} />
         </Routes>
