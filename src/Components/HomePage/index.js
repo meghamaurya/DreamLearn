@@ -18,7 +18,7 @@ const Home = () => {
     // conditional render educator and learner video and pass props democlass 
     return (
         <div>
-            <h3 className='text-center mt-8 text-3xl  text-purple-900 shadow-md shadow-purple-300'>Demo Classes</h3>
+            <h3 className='text-center mt-6 text-3xl  text-purple-900 shadow-md shadow-purple-300'>Demo Classes</h3>
             <Classes demoClass={demoClass} loading={loading} />
         </div>
     )
