@@ -55,7 +55,7 @@ function SignUp(learner) {
     resolver: yupResolver(validationSchema)
   });
   return (
-    <div className=" max-w-[1250px] mx-auto overflow-hidden mt-11 grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 m-3 pl-10 pr-5 h-fit shadow-lg shadow-purple-500 ">
+    <div className=" max-w-[1250px] mx-auto z-10 overflow-hidden mt-11 grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 m-3 pl-10 pr-5 h-fit shadow-lg shadow-purple-500 ">
       <div className="col-span-2 mt-10 mb-8 ">
         <Carousel />
       </div>
