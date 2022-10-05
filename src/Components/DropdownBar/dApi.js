@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom"
-import Instrument from "../Instrument";
+// import Instrument from "../Instrument";
 const Dropdown = () => {
     const [instrumentList, setInstrumentList] = useState(false);
     const [courses, setCourses] = useState(false);
@@ -30,7 +30,7 @@ const Dropdown = () => {
     return (<>
         <div className='productList'>
 
-            <div className='z-10 pl-24 mt-8 text-lg  text-purple-900 shadow-md shadow-purple-300'>
+            <div className='z-10 pl-24 mt-8 text-xl  text-purple-900 shadow-md shadow-purple-300'>
                 <ul className="flex ">
                     <li className="relative pr-4">
                         <button onMouseEnter={showInstrumentList} onMouseLeave={hideInstrumentList} className="font-medium">Instruments</button>
@@ -38,9 +38,10 @@ const Dropdown = () => {
                         {instrumentList ?
                             <div className="absolute pr-6 pl-6 shadow-md shadow-purple-500 rounded-md bg-white p-4" onMouseEnter={showInstrumentList} onMouseLeave={hideInstrumentList} >
                                 {instruments?.map((instrument) => {
-                                    return (<>
-                                        <div className="hover:font-semibold p-0.5"><Link to={`/instruments/${instrument.id}`}>{instrument.price}</Link></div>
-                                    </>
+                                    return (
+                                        <div key={instrument.id} >
+                                            <div className="hover:font-semibold p-0.5"><Link to={`/instruments/${instrument.id}`}>{instrument.price}</Link></div>
+                                        </div>
                                     )
                                 })}
                             </div>
