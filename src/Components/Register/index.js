@@ -1,9 +1,11 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Modal from "../Modal";
 
 // import { useParams } from "react-router-dom";
 const Register = () => {
     const [courseDetail, setCourseDetail] = useState([]);
+    const [showModal, setShowModal] = useState(false);
     // const params = useParams();
     // const { register } = params;
     // const { instrument, register } = params;
@@ -35,11 +37,12 @@ const Register = () => {
                         <div className="shadow-sm shadow-purple-900 p-6">
                             <h2 className="text-2xl font-semibold mb-2">Description</h2>
                             <p className="p-4">{course.description}</p>
-                            <button className="p-2 mt-8 border bg-purple-900 text-white rounded-md text-lg">Register Now</button>
+                            <button className="p-2 mt-8 border bg-purple-900 text-white rounded-md text-lg" onClick={() => setShowModal(true)}>Register Now</button>
                         </div>
                     </div>
                 )
             })}
+            {showModal ? <Modal setShowModal={setShowModal} /> : null}
         </div>
     )
 }
