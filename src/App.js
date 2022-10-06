@@ -11,9 +11,12 @@ import SignIn from './Components/SignIN/SignIn';
 import SignUp from './Components/SignIN/SignUp';
 import Home from './Components/HomePage';
 import AuthService from './Components/Auth/auth.service';
-import Dropdown from './Components/DropdownBar/dApi';
+import LearnerDropdown from './Components/DropdownBar/LearnerDD'
+import Dropdown from './Components/DropdownBar/dd1';
 import Instrument from './Components/Instrument';
 import Register from './Components/Register';
+import Courses from './Components/Courses'
+import Schedule from './Components/Schedule';
 function App() {
   const [learner, setLearner] = useState(false);
   const [educator, setEducator] = useState(false);
@@ -36,7 +39,8 @@ function App() {
         <Nav
           currentUser={currentUser}
           learner={learner} educator={educator} />
-        <Dropdown />
+        {learner ? <LearnerDropdown /> : ""}
+        {educator ? <Dropdown /> : ""}
         <Routes>
           <Route path='/home' element={<Home />} />
           <Route exact path='/' element={isSignin ? '' : <LandingPage setIsSignin={setIsSignin} />} />
@@ -45,8 +49,10 @@ function App() {
           <Route path='/instruments/:instrument' element={<Instrument />} />
           {/* <Route path='/instruments/:register' element={<Register />} /> */}
           <Route path='/instruments/:instrument/:register' element={<Register />} />
+          <Route path='/courses' element={<Courses />} />
+          <Route path='/courses/:schedule' element={<Schedule />} />
           <Route path='/signin' element={<SignIn learner={learner} />} />
-          <Route path='/signup' element={<SignUp />} />
+          <Route path='/signup' element={<SignUp learner={learner} />} />
         </Routes>
         <Comp />
         <Footer />
