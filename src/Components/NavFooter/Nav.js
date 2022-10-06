@@ -43,13 +43,13 @@ function Nav(props) {
 
           <div>
             <ul className=" flex  sm:mt-0 items-center py-2  space-x-10 px-20 text-xl ">
-              <Link to="/" className="font-bold cursor-pointer mt-5 hover:rounded-lg hover:shadow-purple-100 shadow-lg">LandingPage</Link>
+              {/* <Link to="/" className="font-bold cursor-pointer mt-5 hover:rounded-lg hover:shadow-purple-100 shadow-lg">LandingPage</Link> */}
               {/* <Link to="/home" className="font-bold cursor-pointer mt-5 hover:shadow-purple-100 hover:rounded-lg shadow-lg">Home</Link> */}
               {learner && <Link to="/home" className="font-bold cursor-pointer mt-5 hover:shadow-purple-100 hover:rounded-lg shadow-lg">Home</Link>}
               {learner && <Link to="/learner" className="font-bold cursor-pointer mt-5 hover:shadow-purple-100 hover:rounded-lg shadow-lg">{currentUser.username}</Link>}
+              {learner && (<Link to="/learner" className="font-bold cursor-pointer mt-5 hover:rounded-lg hover:shadow-purple-100 shadow-lg" onClick={logOut}>Logout</Link>)}
               {educator && <Link to="/educator" className="font-bold cursor-pointer mt-5 hover:shadow-purple-100 hover:rounded-lg shadow-lg">Home</Link>}
               {educator && <Link to="/educator" className="font-bold cursor-pointer mt-5 hover:shadow-purple-100 hover:rounded-lg shadow-lg">{currentUser.username}</Link>}
-              {learner && (<Link to="/learner" className="font-bold cursor-pointer mt-5 hover:rounded-lg hover:shadow-purple-100 shadow-lg" onClick={logOut}>Logout</Link>)}
               {educator && (<Link to="/educator" className="font-bold cursor-pointer mt-5 hover:rounded-lg hover:shadow-purple-100 shadow-lg" onClick={logOut}>Logout</Link>)}
             </ul>
           </div>

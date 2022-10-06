@@ -12,7 +12,10 @@ export default function Instrument() {
             .then((res) => {
                 console.log("courses", res.data)
                 setInstruments(res.data);
-            })
+            },
+                (err) => {
+                    console.log(err)
+                })
     }, [instrument])
     return (<div >
         <h3 className='text-center mt-10 text-4xl font-semibold text-purple-900'>{instruments.title} Courses</h3>

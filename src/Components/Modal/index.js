@@ -4,7 +4,7 @@ const Modal = (props) => {
     const navigate = useNavigate();
     const handleClick = () => {
         props.setShowModal(false);
-        navigate('/home');
+        navigate('/courses');
     }
     return (
         <div className="bg-black text-purple-900 bg-opacity-70 fixed inset-0 z-50">
