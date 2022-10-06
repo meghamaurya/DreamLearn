@@ -9,7 +9,7 @@ const Cards = (props) => {
                 {card.map((item) => {
                     return (
                         <div key={item.id} className="py-10  " >
-                            <div className='w-72 h-fit  object-cover rounded-lg overflow-hidden shadow-lg shadow-purple-500 '>
+                            <div className='w-72 h-fit  object-cover rounded-lg overflow-hidden select-none shadow-lg shadow-purple-500 '>
                                 <img className='w-full h-44' src={item.image} alt={item.title} />
                                 <div className='px-2 py-2 '>
                                     <div className='font-bold text-xl text-gray-800 mb-2'>{item.title}</div>
