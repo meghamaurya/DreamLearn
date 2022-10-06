@@ -29,8 +29,8 @@ function SignUp(learner) {
     console.log(JSON.stringify(data, null, 2))
     console.log({ role })
     try {
-      await AuthService.signup(username, email, password, role).then(() => {
-        // console.log('succuessfully sign up', response);
+      await AuthService.signup(username, email, password, role).then((response) => {
+        console.log('succuessfully sign up', response);
         if (learner) {
           navigate('/home')   //learner home 
         } else {

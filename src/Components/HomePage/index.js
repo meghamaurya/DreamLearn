@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios'
 import Classes from "../VideoCard/classes";
+import Learner from "./Learner";
+import LearnerDropdown from "../DropdownBar/LearnerDD";
 
 const Home = () => {
     const [demoClass, setDemoClass] = useState([]);
@@ -18,7 +20,8 @@ const Home = () => {
     // conditional render educator and learner video and pass props democlass 
     return (
         <div>
-            <h3 className='text-center mt-6 text-3xl  text-purple-900 shadow-md shadow-purple-300'>Demo Classes</h3>
+
+            <h3 className='text-center mt-6 text-4xl font-semibold text-purple-900 '>Demo Classes</h3>
             <Classes demoClass={demoClass} loading={loading} />
         </div>
     )
