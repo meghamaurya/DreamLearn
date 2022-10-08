@@ -32,11 +32,11 @@ function SignUp(learner) {
       await AuthService.signup(username, email, password, role).then((response) => {
         console.log('succuessfully sign up', response);
         if (learner) {
-          navigate('/home')   //learner home 
+          navigate('/signin')   //learner home 
         } else {
-          navigate('/educator')   //educator home
+          navigate('/signin')   //educator home
         }
-        window.location.reload();
+        //window.location.reload();
       },
         (error) => {
           console.log(error);
@@ -137,7 +137,7 @@ function SignUp(learner) {
               <button type='submit' className='btn bg-purple-900 text-white p-1 rounded-md shadow-md hover:bg-purple-500 hover:text-white hover:font-semibold shadow-purple-300 hover:shadow-purple-900 hover:shadow-md '>Sign Up</button>
             </div>
             <Link className="inline-block align-baseline text-sm text-purple-500 hover:text-purple-900" to="/SignIn" >
-              You don't have an account?{" "}Sign In
+              Have an account?{" "}Sign In
             </Link>
           </form>
 

@@ -31,9 +31,9 @@ const Register = () => {
             <h3 className='text-center mt-10 text-4xl font-semibold text-purple-900'>{courseDetail.title}Register Courses</h3>
             {courseDetail?.map((course) => {
                 return (
-                    <div key={course.id} className="flex w-8/12 ml-56 mt-14 text-purple-900 shadow-lg shadow-purple-500">
+                    <div key={course.id} className="flex w-8/12 m-auto mt-14 text-purple-900 shadow-lg shadow-purple-500">
                         <div key={course.id} className="w-full p-4 shadow-sm shadow-purple-500 inline-block pl-10">
-                            <img className="w-50 h-56 pl-36 " src={course.image} alt={course.title} />
+                            <img className="w-50 h-56 m-auto " src={course.image} alt={course.title} />
                             <h2 className="float-left pt-6 text-lg font-semibold">{course.category}</h2>
                             <p className="float-left -pl-0 pt-2 ">{course.title}</p>
                         </div>

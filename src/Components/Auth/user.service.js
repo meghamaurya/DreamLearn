@@ -14,10 +14,18 @@ const getEducatorDashBoard = () => {
     return axios.get(API_URL + "api/authorise/educator", { headers: authHeader() });
 }
 
+const uploadDemoVideo = () => {
+    return axios.post(API_URL + "api/authorise/educator/addDemoVideo", { headers: authHeader() },)
+}
+export const getCourses = () => {
+    return axios.get(API_URL + "api/courses", { headers: authHeader() });
+}
+
 const UserService = {
     getAllData,
     getLearnerDashBoard,
-    getEducatorDashBoard
+    getEducatorDashBoard,
+    uploadDemoVideo
 }
 
 export default UserService;

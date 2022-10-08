@@ -9,10 +9,9 @@ function Nav(props) {
   const logOut = () => {
     AuthService.logout();
     navigate("/")
+    window.location.reload();
   }
-  const handleClick = () => {
-    navigate("/")
-  }
+
   return (
     <div className="sticky top-0 z-10  ">
       <div className="container-fluid">
@@ -23,7 +22,7 @@ function Nav(props) {
               className="h-14 rounded-lg cursor-pointer ml-8  px-4 pr-0"
               alt="Dream Learn Logo"
             ></img>
-            <span onClick={handleClick} className="font-extrabold flex items-center justify-start text-3xl cursor-pointer mt-3">
+            <span className="font-extrabold flex items-center justify-start text-3xl cursor-pointer mt-3">
               Dream Learn
             </span>
           </div>
@@ -47,10 +46,10 @@ function Nav(props) {
               {/* <Link to="/home" className="font-bold cursor-pointer mt-5 hover:shadow-purple-100 hover:rounded-lg shadow-lg">Home</Link> */}
               {learner && <Link to="/home" className="font-bold cursor-pointer mt-5 hover:shadow-purple-100 hover:rounded-lg shadow-lg">Home</Link>}
               {learner && <Link to="/learner" className="font-bold cursor-pointer mt-5 hover:shadow-purple-100 hover:rounded-lg shadow-lg">{currentUser.username}</Link>}
-              {learner && (<Link to="/learner" className="font-bold cursor-pointer mt-5 hover:rounded-lg hover:shadow-purple-100 shadow-lg" onClick={logOut}>Logout</Link>)}
+              {learner && (<div className="font-bold cursor-pointer mt-5 hover:rounded-lg hover:shadow-purple-100 shadow-lg" onClick={logOut}>Logout</div>)}
               {educator && <Link to="/educator" className="font-bold cursor-pointer mt-5 hover:shadow-purple-100 hover:rounded-lg shadow-lg">Home</Link>}
               {educator && <Link to="/educator" className="font-bold cursor-pointer mt-5 hover:shadow-purple-100 hover:rounded-lg shadow-lg">{currentUser.username}</Link>}
-              {educator && (<Link to="/educator" className="font-bold cursor-pointer mt-5 hover:rounded-lg hover:shadow-purple-100 shadow-lg" onClick={logOut}>Logout</Link>)}
+              {educator && (<div className="font-bold cursor-pointer mt-5 hover:rounded-lg hover:shadow-purple-100 shadow-lg" onClick={logOut}>Logout</div>)}
             </ul>
           </div>
         </nav>

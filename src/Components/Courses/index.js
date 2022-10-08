@@ -16,11 +16,11 @@ const Courses = () => {
                 })
     }, [schedule])
     return (
-        <div>
+        <div >
             <h3 className='text-center mt-10 text-4xl font-semibold text-purple-900'>My Courses</h3>
             {courses.map((course) => {
                 return (
-                    <div className="flex w-9/12 mt-7 ml-40 p-2 justify-between border shadow-sm rounded-md shadow-purple-500">
+                    <div className="flex w-8/12 mt-7 m-auto p-2 justify-between border shadow-sm rounded-md shadow-purple-500">
                         <div className="pr-6 ">
                             <div className="font-bold text-left p-3 text-2xl text-purple-900">{course.title}</div>
                             <div className="text-left pl-3 pb-4 text-purple-700">{course.description}</div>

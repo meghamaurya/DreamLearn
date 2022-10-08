@@ -30,7 +30,7 @@ const Home = () => {
 export default Home;
 
 
-// previour code
+// previous code
 
 // import React, { useState } from 'react'
 // import { useEffect } from "react"
