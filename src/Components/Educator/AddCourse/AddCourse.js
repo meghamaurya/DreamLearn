@@ -1,14 +1,11 @@
 import React from 'react'
-import Form1A from './Form1A'
-import Form1B from './Form1B'
-import Form2 from './Form2'
+import ImageInput from './ImageInput'
 
 const AddCourse = () => {
   return (
-    <div className='m-auto w-96'>
-      <Form1A />
-      <Form1B />
-      <Form2 />
+    <div className='w-3/12 m-auto '>
+
+      <ImageInput />
 
     </div>
   )
