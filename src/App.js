@@ -11,15 +11,19 @@ import SignIn from './Components/SignIN/SignIn';
 import SignUp from './Components/SignIN/SignUp';
 import Home from './Components/HomePage';
 import AuthService from './Components/Auth/auth.service';
-import LearnerDropdown from './Components/DropdownBar/LearnerDD'
-import EducatorDropdown from './Components/DropdownBar/EducatorDD';
+import LearnerDropdown from './Components/SecondNavbar/LearnerDD'
+import EducatorDropdown from './Components/SecondNavbar/EducatorDD';
 import Instrument from './Components/Instrument';
 import Register from './Components/Register';
 import Courses from './Components/Courses'
 import Schedule from './Components/Schedule';
+import Profile from './Components/Profile';
+import About from './Components/AboutContact/About'
+import Contact from './Components/AboutContact/Contact'
 import AddDemoVideo from './Components/Educator/DemoVideo/AddVideo'
 import AddCourse from './Components/Educator/AddCourse/AddCourse'
 import ProtectedRoutes from './Components/ProtectedRoutes';
+import AllSchedule from './Components/AllSchedule';
 function App() {
   const [learner, setLearner] = useState(false);
   const [educator, setEducator] = useState(false);
@@ -27,7 +31,6 @@ function App() {
 
   const [isSignin, setIsSignin] = useState(false);
 
-  const user = AuthService.getCurrentUser();
   useEffect(() => {
     const user = AuthService.getCurrentUser();
     // const accessToken = AuthService.getCurrentUser();
@@ -53,21 +56,25 @@ function App() {
           <Route path='/home' element={<Home />} />
           <Route path='/signin' element={<SignIn learner={learner} />} />
           <Route path='/signup' element={<SignUp learner={learner} />} />
-          <Route element={<ProtectedRoutes user={user} />}>
+          <Route path='/profile' element={<Profile />} />
+          <Route element={<ProtectedRoutes user={learner} />}>
             <Route path='/instruments/:instrument' element={<Instrument />} />
             <Route path='/instruments/:instrument/:register' element={<Register />} />
             <Route path='/courses' element={<Courses />} />
             <Route path='/courses/:schedule' element={<Schedule />} />
-
+            <Route path='/allschedule' element={<AllSchedule />} />
           </Route>
-          <Route element={<ProtectedRoutes user={user} />}>
 
+          <Route element={<ProtectedRoutes user={educator} />}>
+            <Route path='/learner' element={learner ? <Learner /> : <Navigate to="/" />} />
+            <Route path='/educator' element={educator ? <Educator /> : <Navigate to="/" />} />
+            <Route path='/adddemovideo' element={<AddDemoVideo />} />
+            <Route path='/addcourse' element={<AddCourse />} />
           </Route>
-          <Route path='/learner' element={learner ? <Learner /> : <Navigate to="/" />} />
-          <Route path='/educator' element={educator ? <Educator /> : <Navigate to="/" />} />
-          <Route path='/adddemovideo' element={<AddDemoVideo />} />
-          <Route path='/addcourse' element={<AddCourse />} />
+
           {/* <Route path='/instruments/:register' element={<Register />} /> */}
+          <Route path='/about' element={<About />} />
+          <Route path='/contact' element={<Contact />} />
         </Routes>
         <Comp />
         <Footer />
