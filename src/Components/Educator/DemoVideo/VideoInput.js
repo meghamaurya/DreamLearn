@@ -40,7 +40,7 @@ export default function VideoInput(props) {
           src={source}
         />
       )}
-      <div className="w-full p-6 text-lg text-purple-900 border  overflow-auto">{source || "Select Video"}</div>
+      <div className="w-full p-6 text-lg text-purple-900 border-2 rounded-md overflow-auto">{source || "No Video Selected"}</div>
       <input
         ref={inputRef}
         className=" w-48 invisible"
@@ -48,9 +48,9 @@ export default function VideoInput(props) {
         onChange={handleFileChange}
         accept=".mp4,.mpeg"
       />
-      {!source && <button className="border p-1 mt-6 text-lg rounded-lg bg-purple-900 text-white w-20 m-auto" onClick={handleChoose}>Choose</button>}
+      {!source && <button className="border p-1 mt-6 text-lg rounded-lg bg-purple-900 text-white w-32 m-auto" onClick={handleChoose}>Choose Video</button>}
       <button
-        className="border p-1 mt-2 text-lg rounded-lg bg-purple-900 text-white w-32 m-auto focus:outline-none focus:shadow-outline"
+        className="border p-1 mt-3 text-lg rounded-lg bg-purple-900 text-white w-32 m-auto focus:outline-none focus:shadow-outline"
         onClick={uploadDemoVideo} >Upload Video</button>
       {showForm2 && <Form2 video={uploadVideo} />}
     </div>
