@@ -1,14 +1,11 @@
 import React from 'react'
-import Form1 from './Form1'
-import Form2 from './Form2'
+import VideoInput from './VideoInput'
 
 const AddDemoVideo = () => {
-  // const[submit,setSubmit]=useState(false)
   return (
-    <div className='m-auto w-96 '>
-      <Form1 />
+    <div className='w-3/12 m-auto '>
+      <VideoInput />
 
-      <Form2 />
     </div>
   )
 }
