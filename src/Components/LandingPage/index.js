@@ -2,14 +2,14 @@ import React from 'react'
 import Cards from '../Cards'
 import card from '../Cards/cards.json';
 import SignUp from '../SignIN/SignUp';
-const LandingPage = (setIsSignin) => {
+const LandingPage = () => {
 
     return (
         <>
-            {setIsSignin ? (<div>
+            <div>
                 <SignUp />
                 <Cards cards={card} />
-            </div>) : ''}
+            </div>
         </>
     )
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import UserService from '../Auth/user.service';
+import UserService from '../Auth/educator.service';
 import ReactPlayer from "react-player";
 
 const Educator = () => {

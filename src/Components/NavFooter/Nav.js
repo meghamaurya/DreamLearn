@@ -28,7 +28,7 @@ function Nav(props) {
           </div>
           {/* <div className=" flex  flex-col justify-center overflow-hidden bg-gradient-to-br from-lime-300 to-green-500 sm:py-12"> */}
           {/* <div className="relative rounded-2xl bg-black px-6 pt-2 pb-2 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:px-10"> */}
-          <div className="mx-auto max-w-md sm:mx-auto sm:max-w-lg sm:px-10 mt-4 ">
+          <div className="m-auto max-w-md sm:mx-auto sm:max-w-lg sm:px-10 mt-4 ">
             <form action="" className="relative mx-auto w-max text-white">
               <input type="search"
                 className="peer cursor-pointer relative z-10 h-8 w-12 rounded-full bg-transparent pl-8 outline-none focus:w-full focus:cursor-text focus:border-white border-2 focus:pl-16 focus:pr-4 " />

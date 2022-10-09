@@ -15,12 +15,12 @@ const Form1 = () => {
   const user = AuthService.getCurrentUser();
   function submit(e) {
     e.preventDefault();
-    axios.post(API_URL + "api/authorise/educator/addDemoVideo", { headers: authHeader() }, {
-      user: user.id,
-      video: data.video
-    }).then(res => {
-      console.log(res)
-    })
+    // axios.post(API_URL + "api/authorise/educator/addDemoVideo", { headers: authHeader() }, {
+    //   user: user.id,
+    //   video: data.video
+    // }).then(res => {
+    //   console.log(res)
+    // })
   }
   function handleSubmit(e) {
     const newdata = { ...data }

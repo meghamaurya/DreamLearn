@@ -19,6 +19,7 @@ import Courses from './Components/Courses'
 import Schedule from './Components/Schedule';
 import AddDemoVideo from './Components/Educator/DemoVideo/AddVideo'
 import AddCourse from './Components/Educator/AddCourse/AddCourse'
+import ProtectedRoutes from './Components/ProtectedRoutes';
 function App() {
   const [learner, setLearner] = useState(false);
   const [educator, setEducator] = useState(false);
@@ -26,6 +27,7 @@ function App() {
 
   const [isSignin, setIsSignin] = useState(false);
 
+  const user = AuthService.getCurrentUser();
   useEffect(() => {
     const user = AuthService.getCurrentUser();
     // const accessToken = AuthService.getCurrentUser();
@@ -47,20 +49,25 @@ function App() {
         {learner ? <LearnerDropdown /> : ""}
         {educator ? <EducatorDropdown /> : ""}
         <Routes>
-          <Route path='/home' element={<Home />} />
           <Route path='/' element={<LandingPage />} />
-          {/* <Route exact path='/' element={isSignin ? '' : <LandingPage setIsSignin={setIsSignin} />} /> */}
+          <Route path='/home' element={<Home />} />
+          <Route path='/signin' element={<SignIn learner={learner} />} />
+          <Route path='/signup' element={<SignUp learner={learner} />} />
+          <Route element={<ProtectedRoutes user={user} />}>
+            <Route path='/instruments/:instrument' element={<Instrument />} />
+            <Route path='/instruments/:instrument/:register' element={<Register />} />
+            <Route path='/courses' element={<Courses />} />
+            <Route path='/courses/:schedule' element={<Schedule />} />
+
+          </Route>
+          <Route element={<ProtectedRoutes user={user} />}>
+
+          </Route>
           <Route path='/learner' element={learner ? <Learner /> : <Navigate to="/" />} />
           <Route path='/educator' element={educator ? <Educator /> : <Navigate to="/" />} />
           <Route path='/adddemovideo' element={<AddDemoVideo />} />
           <Route path='/addcourse' element={<AddCourse />} />
-          <Route path='/instruments/:instrument' element={<Instrument />} />
           {/* <Route path='/instruments/:register' element={<Register />} /> */}
-          <Route path='/instruments/:instrument/:register' element={<Register />} />
-          <Route path='/courses' element={<Courses />} />
-          <Route path='/courses/:schedule' element={<Schedule />} />
-          <Route path='/signin' element={<SignIn learner={learner} />} />
-          <Route path='/signup' element={<SignUp learner={learner} />} />
         </Routes>
         <Comp />
         <Footer />

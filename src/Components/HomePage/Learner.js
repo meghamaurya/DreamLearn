@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ReactPlayer from "react-player";
 import { Navigate } from 'react-router-dom';
 import AuthService from '../Auth/auth.service';
-import UserService from '../Auth/user.service';
+import UserService from '../Auth/educator.service';
 
 const Learner = () => {
     const [learnerContent, setLearnerContent] = useState([]);
