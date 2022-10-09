@@ -1,11 +1,11 @@
 
+import { useNavigate } from "react-router-dom";
 
-const ProtectedRoutes = (user, children) => {
-    if (user) {
 
-    }
-    return (
-        <div></div>
-    )
+const PrivateRoutes = (props) => {
+    const { learner, children } = props;
+    const navigate = useNavigate();
+    return learner ? children : navigate('/')
+
 }
-export default ProtectedRoutes;
+export default PrivateRoutes;

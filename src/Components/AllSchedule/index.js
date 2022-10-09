@@ -1,11 +1,13 @@
+
+
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const Schedule = () => {
+const AllSchedule = () => {
     const [schedule, setSchedule] = useState([]);
 
     useEffect(() => {
-        axios.get('https://fakestoreapi.com/products?limit=5')
+        axios.get('https://fakestoreapi.com/products?limit=4')
             .then((res) => {
                 console.log("schedule", res.data);
                 setSchedule(res.data);
@@ -13,7 +15,7 @@ const Schedule = () => {
     }, [])
     return (
         <>
-            <h3 className='text-center mt-10 text-4xl font-semibold text-purple-900 underline underline-offset-2'>Schedule</h3>
+            <h3 className='text-center mt-10 text-4xl font-semibold text-purple-900 underline underline-offset-2'>All Schedule</h3>
             {schedule.map((item) => {
                 return (
                     <div className="flex w-8/12 mt-7 m-auto justify-between border shadow-sm rounded-md shadow-purple-500">
@@ -34,4 +36,4 @@ const Schedule = () => {
         </>
     )
 }
-export default Schedule;
+export default AllSchedule;

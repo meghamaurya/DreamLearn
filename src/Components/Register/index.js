@@ -28,7 +28,7 @@ const Register = () => {
     // }, [instrument, register])
     return (
         <div>
-            <h3 className='text-center mt-10 text-4xl font-semibold text-purple-900'>{courseDetail.title}Register Courses</h3>
+            <h3 className='text-center mt-10 text-4xl font-semibold text-purple-900 underline underline-offset-2'>{courseDetail.title}Register Courses</h3>
             {courseDetail?.map((course) => {
                 return (
                     <div key={course.id} className="flex w-8/12 m-auto mt-14 text-purple-900 shadow-lg shadow-purple-500">

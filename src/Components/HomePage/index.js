@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios'
 import Classes from "../VideoCard/classes";
-import Learner from "./Learner";
-import LearnerDropdown from "../DropdownBar/LearnerDD";
+// import Learner from "./Learner";
+// import LearnerDropdown from "../DropdownBar/LearnerDD";
 
 const Home = () => {
     const [demoClass, setDemoClass] = useState([]);

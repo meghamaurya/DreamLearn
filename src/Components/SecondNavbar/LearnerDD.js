@@ -25,7 +25,7 @@ const LearnerDropdown = () => {
 
             <div className='z-10 pl-24 mt-8 text-xl  text-purple-900 shadow-md shadow-purple-300'>
                 <ul className="flex ">
-                    <li className="relative pr-4">
+                    <li className="relative pr-2">
                         <button onMouseEnter={showInstrumentList} onMouseLeave={hideInstrumentList} className="font-medium">Instruments</button>
 
                         {instrumentList ?
@@ -41,10 +41,10 @@ const LearnerDropdown = () => {
                             : null}
                     </li>
                     <li >
-                        <button className="font-medium pl-2" onClick={() => navigate("/courses")}>Courses</button>
+                        <button className="font-medium pl-2 pr-2" onClick={() => navigate("/courses")}>Courses</button>
                     </li>
                     <li >
-                        <button className="font-medium pl-2" onClick={() => navigate("/allschedule")}>Schedule</button>
+                        <button className="font-medium pl-2 pr-2" onClick={() => navigate("/allschedule")}>Schedule</button>
                     </li>
                 </ul>
             </div>

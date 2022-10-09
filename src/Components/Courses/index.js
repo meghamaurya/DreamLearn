@@ -17,7 +17,7 @@ const Courses = () => {
     }, [schedule])
     return (
         <div >
-            <h3 className='text-center mt-10 text-4xl font-semibold text-purple-900'>My Courses</h3>
+            <h3 className='text-center mt-10 text-4xl font-semibold underline underline-offset-2 text-purple-900'>My Courses</h3>
             {courses.map((course) => {
                 return (
                     <div className="flex w-8/12 mt-7 m-auto p-2 justify-between border shadow-sm rounded-md shadow-purple-500">

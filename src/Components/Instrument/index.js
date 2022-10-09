@@ -18,7 +18,7 @@ export default function Instrument() {
                 })
     }, [instrument])
     return (<div >
-        <h3 className='text-center mt-10 text-4xl font-semibold text-purple-900'>{instruments.title} Courses</h3>
+        <h3 className='text-center mt-10 text-4xl font-semibold text-purple-900 underline underline-offset-2'>{instruments.title} Courses</h3>
         <div className="w-80 p-4 mt-14 inline-block cursor-pointer "><Link to={`/instruments/${instruments.id}/register`}>
             {/* <div className="w-80 p-4 mt-14 inline-block cursor-pointer "><Link to={`/instruments/${instrument}`}> */}
             <img className="w-full h-56 " src={instruments.image} alt={instruments.title} />
