@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from 'react-router-dom';
 function Footer() {
   return (
 
@@ -7,14 +7,14 @@ function Footer() {
       <footer className="shadow-xl md:flex md:items-center md:justify-between md:p-4 bg-purple-900 ">
         <ul className="flex flex-wrap ml-10 mt-2 text-sm font-bold text-white sm:-mt-0.5 ">
           <li>
-            <a href="/" className="mr-4 hover:underline md:mr-6 text-xl ">
+            <Link to="/about" className="mr-4 hover:underline md:mr-6 text-xl ">
               About Us
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/" className="mr-4 hover:underline md:mr-6 text-xl">
+            <Link to="/contact" className="mr-4 hover:underline md:mr-6 text-xl">
               Contact Us
-            </a>
+            </Link>
           </li>
           {/* If need in the future then we will be use this. */}
           {/* <li>
