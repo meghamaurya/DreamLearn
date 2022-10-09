@@ -7,19 +7,21 @@ const getAllData = () => {
     return axios.get(API_URL + "api/test/all");
 }
 
+
 const getEducatorDashBoard = () => {
     return axios.get(API_URL + "api/authorise/educator", { headers: authHeader() });
 }
-
-const uploadDemoVideo = () => {
-    return axios.post(API_URL + "api/authorise/educator/addDemoVideo", { headers: authHeader() },)
+const uploadDemoVideo = (userDetail) => {
+    return axios.post(API_URL + "api/authorise/educator/addDemoVideo", userDetail,{ headers: {...authHeader(),'Content-Type': 'multipart/form-data'},  });
 }
-
-
-const UserService = {
+const uploadImage = (userDetail) => {
+    return axios.post(API_URL + "api/authorise/educator/uploadImage", userDetail,{ headers: {...authHeader(),'Content-Type': 'multipart/form-data'},  });
+}
+const EducatorService = {
     getAllData,
     getEducatorDashBoard,
-    uploadDemoVideo
+    uploadDemoVideo,
+    uploadImage
 }
 
-export default UserService;
+export default EducatorService;
