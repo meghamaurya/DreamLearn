@@ -21,7 +21,7 @@ const Home = () => {
     return (
         <div>
 
-            <h3 className='text-center mt-6 text-4xl font-semibold text-purple-900 '>Demo Classes</h3>
+            <h3 className='text-center mt-6 text-4xl font-semibold text-purple-900 underline underline-offset-2'>Demo Classes</h3>
             <Classes demoClass={demoClass} loading={loading} />
         </div>
     )
