@@ -7,7 +7,7 @@ import Carousel from "../Hero Section/Carousel"
 import AuthService from "../Auth/auth.service";
 
 
-function SignUp(learner) {
+function SignUp() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -31,11 +31,7 @@ function SignUp(learner) {
     try {
       await AuthService.signup(username, email, password, role).then((response) => {
         console.log('succuessfully sign up', response);
-        if (learner) {
-          navigate('/signin')   //learner home 
-        } else {
-          navigate('/signin')   //educator home
-        }
+        navigate('/signin')
         //window.location.reload();
       },
         (error) => {
@@ -60,7 +56,7 @@ function SignUp(learner) {
         <Carousel />
       </div>
 
-      <div className="w-full max-w-80% flex justify-start items-start pt-2">
+      <div className="w-full max-w-80% m-auto flex justify-start items-start ">
         <div className="w-full">
           <form className="bg-white shadow-md rounded px-6 pt-6 pb-1 mb-3" onSubmit={handleSubmit(onSubmit)}>
 
