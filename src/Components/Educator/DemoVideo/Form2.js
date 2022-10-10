@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
 import EducatorService from '../../Auth/educator.service';
 const Form2 = (props) => {
-  const navigate = useNavigate();
   console.log(props, "videoInput")
 
   const [data, setData] = useState({
@@ -11,22 +9,44 @@ const Form2 = (props) => {
     video: null,
 
   });
-  const [formSubmit, setFormSubmit] = useState(false);
   console.log(data)
+  const [formSubmit, setFormSubmit] = useState(false);
+  let errorsObj = { title: '', instrument: '', video: '' };
+  const [errors, setErrors] = useState(errorsObj);
+  // const [disable, setDisable] = useState(false);
+
   function handleSubmit(e) {
     e.preventDefault();
+    let error = false;
+    const errorObj = { ...errorsObj };
+    if (data.title === '') {
+      errorObj.title = "** Required";
+      error = true;
+    }
+    if (data.instrument === '') {
+      errorObj.instrument = "** Required";
+      error = true;
+    }
+    if (data.video === '') {
+      errorObj.video = "** Required";
+      error = true;
+    }
+    setErrors(errorObj);
+    if (!error) {
+      console.log('form submit')
+      setFormSubmit(false)
+      let userDetail = new FormData();
+      userDetail.append("title", data.title);
+      userDetail.append("instrument", data.instrument);
+      userDetail.append("demoVideo", props.video);
+      //for upload vide0 use only "demoVideo" key
+      //for upload image use only "image" key
+      EducatorService.uploadDemoVideo(userDetail);
+      setTimeout(function () {
+        setFormSubmit(true);
+      }, 9000);
+    }
 
-    setFormSubmit(false)
-    let userDetail = new FormData();
-    userDetail.append("title", data.title);
-    userDetail.append("instrument", data.instrument);
-    userDetail.append("demoVideo", props.video);
-    //for upload vide0 use only "demoVideo" key
-    //for upload image use only "image" key
-    EducatorService.uploadDemoVideo(userDetail);
-    setTimeout(function () {
-      setFormSubmit(true);
-    }, 7000);
   }
 
   function handleChange(e) {
@@ -38,17 +58,20 @@ const Form2 = (props) => {
   }
 
   const handleReload = () => {
-    window.location.reload();
+    window.location.reload()
   }
+
+
   return (
     <div className=" mt-10 ">
-      <form onSubmit={(e) => handleSubmit(e)} >
-        <div className="mb-4">
+      <form onSubmit={handleSubmit} >
+        <div className="mb-1">
           <input type="text" id="title" placeholder='Video Title'
             onChange={(e) => handleChange(e)} value={data.title}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
         </div>
-        <div className="mb-4">
+        {errors.title && <div className="text-red-600 font-semibold mb-3">{errors.title}</div>}
+        <div className="mb-1 mt-4">
           <select onChange={(e) => handleChange(e)} name="instrument" id="instrument"
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
             <option >Select Instrument</option>
@@ -64,8 +87,9 @@ const Form2 = (props) => {
             <option value="violin" id='violin'>Violin</option>
           </select>
         </div>
+        {errors.instrument && <div className="text-red-600 font-semibold mb-3">{errors.instrument}</div>}
         <div className="mb-4">
-          <button className="border p-1 mt-2 text-lg rounded-lg bg-purple-900 text-white w-20 m-auto focus:outline-none focus:shadow-outline" type='submit'>submit</button>
+          <button className="border p-1 mt-2 text-lg rounded-lg bg-purple-900 text-white w-20 m-auto focus:outline-none focus:shadow-outline" type='submit' >submit</button>
         </div>
         {formSubmit ? (
           <>
@@ -73,7 +97,7 @@ const Form2 = (props) => {
               Video Uploaded
             </div>
             <div className="mb-4">
-              <button className="border p-1 mt-2 text-lg rounded-lg bg-purple-900 text-white w-20 m-auto focus:outline-none focus:shadow-outline" type='submit' onClick={handleReload}>Add More Video</button>
+              <button className="border p-1 mt-4 text-lg rounded-lg bg-purple-900 text-white w-30 m-auto focus:outline-none focus:shadow-outline" type='submit' onClick={handleReload}>Add More Video</button>
             </div>
           </>) : null}
 
