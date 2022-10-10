@@ -24,6 +24,7 @@ import Profile from './Components/Profile';
 import AllSchedule from './Components/AllSchedule';
 import AddDemoVideo from './Components/Educator/DemoVideo/AddVideo';
 import AddCourse from './Components/Educator/AddCourse/AddCourse';
+import AddSchedule from './Components/Educator/AddSchedule';
 function App() {
   const [learner, setLearner] = useState(false);
   const [educator, setEducator] = useState(false);
@@ -63,6 +64,7 @@ function App() {
           <Route path='/allschedule' element={<AllSchedule />} />
           <Route path='/adddemovideo' element={<AddDemoVideo />} />
           <Route path='/addcourse' element={<AddCourse />} />
+          <Route path='/addschedule' element={<AddSchedule />} />
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
         </Routes>

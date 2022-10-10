@@ -1,26 +1,29 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"
 const EducatorDropdown = () => {
-  const navigate=useNavigate()
+    const navigate = useNavigate()
 
 
-   
+
 
     return (
         <div className='z-10 pl-24 mt-8 text-lg  text-purple-900 shadow-md shadow-purple-300'>
             <ul className="flex ">
-                <li className="relative pr-4">
+                <li className="relative pr-2">
                     <button className="font-medium"
-                    onClick={()=>{navigate("/adddemovideo")}}
+                        onClick={() => { navigate("/adddemovideo") }}
                     >Add Demo Video</button>
 
-                   
+
                 </li>
                 <li >
-                    <button className="font-medium pl-2"
-                    onClick={()=>{navigate("/addcourse")}}
+                    <button className="font-medium pl-2 pr-2"
+                        onClick={() => { navigate("/addcourse") }}
                     >Add Course</button>
-                    
+
+                </li>
+                <li >
+                    <button className="font-medium pl-2 pr-2" onClick={() => { navigate("/addschedule") }}>Add Schedule</button>
                 </li>
             </ul>
         </div>
