@@ -11,17 +11,17 @@ const getAllData = () => {
 const getEducatorDashBoard = () => {
     return axios.get(API_URL + "api/authorise/educator", { headers: authHeader() });
 }
-const uploadDemoVideo = (userDetail) => {
-    return axios.post(API_URL + "api/authorise/educator/addDemoVideo", userDetail, { headers: { ...authHeader(), 'Content-Type': 'multipart/form-data' }, });
+const uploadDemoVideo = (videoDetail) => {
+    return axios.post(API_URL + "api/authorise/educator/addDemoVideo", videoDetail, { headers: { ...authHeader(), 'Content-Type': 'multipart/form-data' }, });
 }
-const uploadImage = (userDetail) => {
-    return axios.post(API_URL + "api/authorise/educator/addCourse", userDetail, { headers: { ...authHeader(), 'Content-Type': 'multipart/form-data' }, });
+const uploadCourse = (courseDetail) => {
+    return axios.post(API_URL + "api/authorise/educator/addCourse", courseDetail, { headers: { ...authHeader(), 'Content-Type': 'multipart/form-data' }, });
 }
 const EducatorService = {
     getAllData,
     getEducatorDashBoard,
     uploadDemoVideo,
-    uploadImage
+    uploadCourse
 }
 
 export default EducatorService;
