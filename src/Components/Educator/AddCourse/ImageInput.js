@@ -32,7 +32,7 @@ export default function ImageInput(props) {
     <div className=" mt-16 m-auto pb-20 flex flex-col ">
       {source && (
         <img
-          className="w-84 h-48 rounded-lg"
+          className="m-auto w-72 h-48 mb-2 rounded-lg"
           width={width}
           height={height}
           controls
@@ -40,18 +40,18 @@ export default function ImageInput(props) {
           alt="preview"
         />
       )}
-      <div className="w-full p-6 text-lg text-purple-900 border-2 rounded-md  overflow-auto">{source || "No Image Selected"}</div>
+      <div className="w-full m-auto p-6 text-lg text-purple-900 border-2 rounded-md  overflow-auto">{source || "No Image Selected"}</div>
       <input
         ref={inputRef}
         className="w-48 invisible"
         type="file"
         onChange={handleFileChange}
-        accept="png,jpg,jpeg"
+        accept="png,jpg"
       />
       {!source && <button className="border p-1 mt-6 text-lg rounded-lg bg-purple-900 text-white w-32 m-auto" onClick={handleChoose}>Choose File</button>}
 
       <button
-        className="border p-1 mt-3 text-lg rounded-lg bg-purple-900 text-white w-32 m-auto focus:outline-none focus:shadow-outline"
+        className="border p-1 mt-2 text-lg rounded-lg bg-purple-900 text-white w-32 m-auto focus:outline-none focus:shadow-outline"
         onClick={uploadDemoImage} >Upload Image</button>
       {showForm1B && <Form1B image={uploadImage} />}
     </div>
