@@ -15,7 +15,7 @@ const Form1B = (props) => {
         image: null
     })
     console.log(data)
-
+    const [formSubmit, setFormSubmit] = useState(false);
     let errorsObj = {
         title: '',
         description: '',
@@ -80,7 +80,9 @@ const Form1B = (props) => {
 
             EducatorService.uploadCourse(courseDetail);
         }
-
+        setTimeout(function () {
+            setFormSubmit(true);
+        }, 9000);
     }
 
     function handleChange(e) {
@@ -89,6 +91,9 @@ const Form1B = (props) => {
         setData(newdata);
         console.log(newdata)
 
+    }
+    const handleReload = () => {
+        window.location.reload()
     }
 
     return (
@@ -170,6 +175,15 @@ const Form1B = (props) => {
                 {errors.days && <div className="text-red-600 font-semibold mb-6">{errors.days}</div>}
                 <button className="border p-1 mt-3 text-lg rounded-lg bg-purple-900 text-white w-32 m-auto focus:outline-none focus:shadow-outline"
                     type='submit' >Submit</button>
+                {formSubmit ? (
+                    <>
+                        <div className='text-center mt-6 text-4xl font-semibold text-purple-900'>
+                            Video Uploaded
+                        </div>
+                        <div className="mb-4">
+                            <button className="border p-1 mt-4 text-lg rounded-lg bg-purple-900 text-white w-30 m-auto focus:outline-none focus:shadow-outline" type='submit' onClick={handleReload}>Add More Video</button>
+                        </div>
+                    </>) : null}
             </form>
 
         </div>
