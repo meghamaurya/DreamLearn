@@ -12,10 +12,10 @@ const getEducatorDashBoard = () => {
     return axios.get(API_URL + "api/authorise/educator", { headers: authHeader() });
 }
 const uploadDemoVideo = (userDetail) => {
-    return axios.post(API_URL + "api/authorise/educator/addDemoVideo", userDetail,{ headers: {...authHeader(),'Content-Type': 'multipart/form-data'},  });
+    return axios.post(API_URL + "api/authorise/educator/addDemoVideo", userDetail, { headers: { ...authHeader(), 'Content-Type': 'multipart/form-data' }, });
 }
 const uploadImage = (userDetail) => {
-    return axios.post(API_URL + "api/authorise/educator/uploadImage", userDetail,{ headers: {...authHeader(),'Content-Type': 'multipart/form-data'},  });
+    return axios.post(API_URL + "api/authorise/educator/addCourse", userDetail, { headers: { ...authHeader(), 'Content-Type': 'multipart/form-data' }, });
 }
 const EducatorService = {
     getAllData,
