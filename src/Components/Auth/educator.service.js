@@ -16,11 +16,15 @@ const uploadDemoVideo = (videoDetail) => {
 const uploadCourse = (courseDetail) => {
     return axios.post(API_URL + "api/authorise/educator/addCourse", courseDetail, { headers: { ...authHeader(), 'Content-Type': 'multipart/form-data' }, });
 }
+const uploadSchedule = (scheduleDetail) => {
+    return axios.post(API_URL + "api/authorise/educator/addCourse", scheduleDetail, { headers: { ...authHeader(), 'Content-Type': 'multipart/form-data' }, });
+}
 const EducatorService = {
     getAllData,
     getEducatorDashBoard,
     uploadDemoVideo,
-    uploadCourse
+    uploadCourse,
+    uploadSchedule
 }
 
 export default EducatorService;
