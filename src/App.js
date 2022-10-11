@@ -24,7 +24,7 @@ import Profile from './Components/Profile';
 import AllSchedule from './Components/AllSchedule';
 import AddDemoVideo from './Components/Educator/DemoVideo/AddVideo';
 import AddCourse from './Components/Educator/AddCourse/AddCourse';
-import AddSchedule from './Components/Educator/AddSchedule';
+import AddSchedule from './Components/Educator/AddSchedule/AddCourseSchedule';
 function App() {
   const [learner, setLearner] = useState(false);
   const [educator, setEducator] = useState(false);
@@ -52,8 +52,7 @@ function App() {
           <Route exact path='/' element={<LandingPage />} />
           {/* <Route path='/signup' element={<SignUp />} /> */}
           <Route path='/signin' element={<SignIn learner={learner} educator={educator} />} />
-          <Route path='/learner' element={<LearnerHome />} />
-          {/* <Route path='/learner' element={learner ? <LearnerHome /> : <Navigate to="/" />} /> */}
+          <Route path='/learner' element={learner ? <LearnerHome /> : <Navigate to="/" />} />
           <Route path='/educator' element={educator ? <EducatorHome /> : <Navigate to="/" />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/home' element={<Home />} />
