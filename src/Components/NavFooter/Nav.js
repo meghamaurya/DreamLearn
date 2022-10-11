@@ -53,7 +53,7 @@ function Nav(props) {
               {learner && <Link to="/profile" className="font-bold cursor-pointer mt-5 hover:shadow-purple-100 hover:rounded-lg shadow-lg">{currentUser.username}</Link>}
               {learner && (<div className="font-bold cursor-pointer mt-5 hover:rounded-lg hover:shadow-purple-100 shadow-lg" onClick={logOut}>Logout</div>)}
               {/* educator home */}
-              {educator && <Link to="/home" className="font-bold cursor-pointer mt-5 hover:shadow-purple-100 hover:rounded-lg shadow-lg">Home</Link>}
+              {educator && <Link to="/educator" className="font-bold cursor-pointer mt-5 hover:shadow-purple-100 hover:rounded-lg shadow-lg">Home</Link>}
               {educator && <Link to="/profile" className="font-bold cursor-pointer mt-5 hover:shadow-purple-100 hover:rounded-lg shadow-lg">{currentUser.username}</Link>}
               {educator && (<div className="font-bold cursor-pointer mt-5 hover:rounded-lg hover:shadow-purple-100 shadow-lg" onClick={logOut}>Logout</div>)}
             </ul>

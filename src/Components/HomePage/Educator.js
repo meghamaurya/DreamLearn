@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import UserService from '../Auth/educator.service';
+import EducatorService from '../Auth/educator.service';
 import ReactPlayer from "react-player";
 
-const Educator = () => {
-    const [EducatorContent, setEducatorContent] = useState('');
+
+const EducatorHome = () => {
+    const [EducatorContent, setEducatorContent] = useState([]);
     const [loading, setLoading] = useState(false);
     useEffect(() => {
         setLoading(true);
-        UserService.getEducatorDashBoard().then(
+        EducatorService.getEducatorDashBoard().then(
             (response) => {
-                console.log('Educator content');
+                console.log('Educator content', response);
                 setEducatorContent(response.data);
                 setLoading(false);
             },
@@ -18,6 +19,7 @@ const Educator = () => {
             }
         );
     }, [])
+
     return (
         <div className="max-w-[1250px] mx-auto">
             <h3 className='text-center mt-8 text-3xl  text-purple-900 shadow-md shadow-purple-300 underline underline-offset-2'>Demo Classes</h3>
@@ -33,14 +35,14 @@ const Educator = () => {
                     </div>
                 </div>) :
                 (EducatorContent.map((data) => {
-                    const { id, userName, bio, video } = data;
+                    const { id, courseTitle, instrument, videoUrl } = data;
                     return (
                         <div key={id} className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 m-4 mt-16'>
                             <div className="inline-block w-80 h-56 overflow-hidden object-cover rounded-lg shadow-lg shadow-purple-500 mb-10" >
-                                <ReactPlayer controls url={video} width="100%" height="85%" />
+                                <ReactPlayer controls url={videoUrl} width="100%" height="85%" />
                                 <div className='flex place-content-between text-gray-800 text-md items-center  m-1'>
-                                    <h2>{userName}</h2>
-                                    <p >{bio}</p>
+                                    <h2>{courseTitle}</h2>
+                                    <p >{instrument}</p>
                                 </div>
                             </div>
                         </div>
@@ -50,4 +52,4 @@ const Educator = () => {
     )
 };
 
-export default Educator;
+export default EducatorHome;

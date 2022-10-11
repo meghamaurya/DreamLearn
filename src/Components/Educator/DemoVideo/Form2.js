@@ -27,10 +27,10 @@ const Form2 = (props) => {
       errorObj.instrument = "** Required";
       error = true;
     }
-    if (data.video === '') {
-      errorObj.video = "** Required";
-      error = true;
-    }
+    // if (data.video === '') {
+    //   errorObj.video = "** Required";
+    //   error = true;
+    // }
     setErrors(errorObj);
     if (!error) {
       console.log('form submit')

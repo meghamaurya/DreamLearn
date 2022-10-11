@@ -3,8 +3,8 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Nav from './Components/NavFooter/Nav';
 import Footer from './Components/NavFooter/Footer';
-import Learner from './Components/HomePage/Learner';
-import Educator from './Components/HomePage/Educator';
+import LearnerHome from './Components/HomePage/Learner';
+import EducatorHome from './Components/HomePage/Educator';
 import LandingPage from './Components/LandingPage';
 import Comp from './Components/NavFooter/Comp'
 import SignIn from './Components/SignIN/SignIn';
@@ -51,9 +51,10 @@ function App() {
           {/* <Route path='/home' element={<PrivateRoutes learner={learner} ><Home /></PrivateRoutes>} /> */}
           <Route exact path='/' element={<LandingPage />} />
           {/* <Route path='/signup' element={<SignUp />} /> */}
-          <Route path='/signin' element={<SignIn learner={learner} />} />
-          <Route path='/learner' element={learner ? <Learner /> : <Navigate to="/" />} />
-          <Route path='/educator' element={educator ? <Educator /> : <Navigate to="/" />} />
+          <Route path='/signin' element={<SignIn learner={learner} educator={educator} />} />
+          <Route path='/learner' element={<LearnerHome />} />
+          {/* <Route path='/learner' element={learner ? <LearnerHome /> : <Navigate to="/" />} /> */}
+          <Route path='/educator' element={educator ? <EducatorHome /> : <Navigate to="/" />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/home' element={<Home />} />
           <Route path='/instruments/:instrument' element={<Instrument />} />
