@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import EducatorService from '../Auth/educator.service';
-import ReactPlayer from "react-player";
 
 
 const EducatorHome = () => {
@@ -10,8 +9,8 @@ const EducatorHome = () => {
         setLoading(true);
         EducatorService.getEducatorDashBoard().then(
             (response) => {
-                console.log('Educator content', response);
-                setEducatorContent(response.data);
+                console.log('Educator content', response.data.message);
+                setEducatorContent(response.data.message);
                 setLoading(false);
             },
             (error) => {
@@ -37,9 +36,11 @@ const EducatorHome = () => {
                 (EducatorContent.map((data) => {
                     const { id, courseTitle, instrument, videoUrl } = data;
                     return (
-                        <div key={id} className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 m-4 mt-16'>
+                        <div key={id} className='content-start inline-block m-4 mt-16'>
                             <div className="inline-block w-80 h-56 overflow-hidden object-cover rounded-lg shadow-lg shadow-purple-500 mb-10" >
-                                <ReactPlayer controls url={videoUrl} width="100%" height="85%" />
+                                <video className='w-full h-48' controls >
+                                    <source src={videoUrl} />
+                                </video>
                                 <div className='flex place-content-between text-gray-800 text-md items-center  m-1'>
                                     <h2>{courseTitle}</h2>
                                     <p >{instrument}</p>
