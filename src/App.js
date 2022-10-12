@@ -25,6 +25,7 @@ import AllSchedule from './Components/AllSchedule';
 import AddDemoVideo from './Components/Educator/DemoVideo/AddVideo';
 import AddCourse from './Components/Educator/AddCourse/AddCourse';
 import AddSchedule from './Components/Educator/AddSchedule/AddCourseSchedule';
+import MyCourses from './Components/Educator/MyCourses/my';
 function App() {
   const [learner, setLearner] = useState(false);
   const [educator, setEducator] = useState(false);
@@ -32,6 +33,7 @@ function App() {
 
   useEffect(() => {
     const user = AuthService.getCurrentUser();
+    console.log(user, 'currentuser')
     if (user) {
       setCurrentUser(user);
       setLearner(user.role.includes("ROLE_LEARNER"));
@@ -52,8 +54,11 @@ function App() {
           <Route exact path='/' element={<LandingPage />} />
           {/* <Route path='/signup' element={<SignUp />} /> */}
           <Route path='/signin' element={<SignIn learner={learner} educator={educator} />} />
-          <Route path='/learner' element={learner ? <LearnerHome /> : <Navigate to="/" />} />
-          <Route path='/educator' element={educator ? <EducatorHome /> : <Navigate to="/" />} />
+          <Route path='/learner' element={<LearnerHome />} />
+          <Route path='/educator' element={<EducatorHome />} />
+
+          {/* <Route path='/learner' element={learner ? <LearnerHome /> : <Navigate to="/" />} /> */}
+          {/* <Route path='/educator' element={educator ? <EducatorHome /> : <Navigate to="/" />} /> */}
           <Route path='/profile' element={<Profile />} />
           <Route path='/home' element={<Home />} />
           <Route path='/instruments/:instrument' element={<Instrument />} />
@@ -65,6 +70,7 @@ function App() {
           <Route path='/adddemovideo' element={<AddDemoVideo />} />
           <Route path='/addcourse' element={<AddCourse />} />
           <Route path='/addschedule' element={<AddSchedule />} />
+          <Route path='/mycourses' element={<MyCourses />} />
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
         </Routes>
