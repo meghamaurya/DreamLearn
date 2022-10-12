@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import EducatorService from '../../Auth/educator.service';
 
 const Form1B = (props) => {
-    console.log(props, "imageInput")
+    // console.log(props, "imageInput")
 
     const [data, setData] = useState({
         title: "",
@@ -14,8 +14,7 @@ const Form1B = (props) => {
         days: "",
         image: null
     })
-    console.log(data)
-    const [formSubmit, setFormSubmit] = useState(false);
+    // console.log(data)
     let errorsObj = {
         title: '',
         description: '',
@@ -27,7 +26,7 @@ const Form1B = (props) => {
         image: ''
     };
     const [errors, setErrors] = useState(errorsObj);
-
+    const [successMsg, setSuccessMsg] = useState('')
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -78,18 +77,18 @@ const Form1B = (props) => {
             courseDetail.append("days", data.days);
             courseDetail.append("image", props.image);
 
-            EducatorService.uploadCourse(courseDetail);
+            EducatorService.uploadCourse(courseDetail).then((response) => {
+                console.log("successMsg", response.data.message)
+                setSuccessMsg(response.data.message);
+            });
         }
-        setTimeout(function () {
-            setFormSubmit(true);
-        }, 9000);
     }
 
     function handleChange(e) {
         const newdata = { ...data }
         newdata[e.target.id] = e.target.value;
         setData(newdata);
-        console.log(newdata)
+        // console.log(newdata)
 
     }
     const handleReload = () => {
@@ -175,13 +174,13 @@ const Form1B = (props) => {
                 {errors.days && <div className="text-red-600 font-semibold mb-6">{errors.days}</div>}
                 <button className="border p-1 mt-3 text-lg rounded-lg bg-purple-900 text-white w-32 m-auto focus:outline-none focus:shadow-outline"
                     type='submit' >Submit</button>
-                {formSubmit ? (
+                {successMsg ? (
                     <>
-                        <div className='text-center mt-6 text-4xl font-semibold text-purple-900'>
-                            Video Uploaded
+                        <div className='text-center mt-6 text-3xl font-semibold text-purple-700 capitalize'>
+                            {successMsg}
                         </div>
-                        <div className="mb-4">
-                            <button className="border p-1 mt-4 text-lg rounded-lg bg-purple-900 text-white w-30 m-auto focus:outline-none focus:shadow-outline" type='submit' onClick={handleReload}>Add More Video</button>
+                        <div className="mb-4 m-auto ">
+                            <button className="border p-1 mt-4 text-lg rounded-lg bg-purple-900 text-white w-30 focus:outline-none focus:shadow-outline" type='submit' onClick={handleReload}>Add More Video</button>
                         </div>
                     </>) : null}
             </form>
