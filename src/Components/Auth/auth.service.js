@@ -2,8 +2,9 @@ import axios from "axios";
 
 const API_URL = "https://dreamlearn-capstone.herokuapp.com/";
 
-const signup = async (username, email, password, role) => {
+const signup = async (name, username, email, password, role) => {
     await axios.post(`${API_URL}api/auth/signup`, {
+        name,
         username,
         email,
         password,
@@ -22,6 +23,7 @@ const signin = async (username, password) => {
         }).then((response) => {
             if (response.data.accessToken) {
                 localStorage.setItem("user", JSON.stringify(response.data));
+
             }
             return response.data;
         });
