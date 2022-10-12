@@ -25,7 +25,7 @@ import AllSchedule from './Components/AllSchedule';
 import AddDemoVideo from './Components/Educator/DemoVideo/AddVideo';
 import AddCourse from './Components/Educator/AddCourse/AddCourse';
 import AddSchedule from './Components/Educator/AddSchedule/AddCourseSchedule';
-import MyCourses from './Components/Educator/MyCourses/my';
+import MyCourses from './Components/Educator/MyCourses/MyCourse';
 function App() {
   const [learner, setLearner] = useState(false);
   const [educator, setEducator] = useState(false);

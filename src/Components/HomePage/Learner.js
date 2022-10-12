@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import ReactPlayer from "react-player";
+
 import { Navigate } from 'react-router-dom';
 import AuthService from '../Auth/auth.service';
-import UserService from '../Auth/educator.service';
+import LearnerService from '../Auth/learner.service';
 
 const LearnerHome = () => {
     const [learnerContent, setLearnerContent] = useState([]);
@@ -10,10 +10,10 @@ const LearnerHome = () => {
     // const navigate = useNavigate();
     useEffect(() => {
         setLoading(true);
-        UserService.getLearnerDashBoard().then(
+        LearnerService.getLearnerDashBoard().then(
             (response) => {
-                console.log('learner content');
-                setLearnerContent(response.data);
+                // console.log('learner content', response);
+                setLearnerContent(response.data.message);
                 setLoading(false);
             },
             (error) => {
@@ -43,14 +43,16 @@ const LearnerHome = () => {
                     </div>
                 </div>) :
                 (learnerContent.map((data) => {
-                    const { id, userName, bio, video } = data;
+                    const { id, educator, instrument, videoUrl } = data;
                     return (
-                        <div key={id} className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 m-4 mt-16'>
-                            <div className="inline-block w-80 h-56 overflow-hidden object-cover rounded-lg shadow-lg shadow-purple-500 mb-10" >
-                                <ReactPlayer controls url={video} width="100%" height="85%" />
-                                <div className='flex place-content-between text-gray-800 text-md items-center  m-1'>
-                                    <h2>{userName}</h2>
-                                    <p >{bio}</p>
+                        <div className='content-start inline-block m-4 mt-16'>
+                            <div key={id} className="inline-block w-80 h-56 overflow-hidden object-cover rounded-lg shadow-lg shadow-purple-500 mb-10" >
+                                <video className='w-full h-48' controls >
+                                    <source src={videoUrl} />
+                                </video>
+                                <div className='flex place-content-between text-purple-900 text-md items-center  m-1'>
+                                    <h2>{educator}</h2>
+                                    <p >{instrument}</p>
                                 </div>
                             </div>
                         </div>

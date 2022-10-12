@@ -7,9 +7,9 @@ const CourseList = () => {
     const [loading, setLoading] = useState(false);
     useEffect(() => {
         setLoading(true);
-        EducatorService.showDemoVideos().then(
+        EducatorService.MyCourse().then(
             (response) => {
-                console.log('eduactor Course List', response.data.message);
+                // console.log('eduactor Course List', response.data.message);
                 setCourseList(response.data.message);
                 setLoading(false);
             },
@@ -33,12 +33,10 @@ const CourseList = () => {
             ) :
                 (courseList.map((data) => {
                     const { id, title } = data;
-                    console.log(title, "educator list 1")
-
                     return (
                         <div key={id} className="flex  mt-5 m-3 p-2 border shadow-sm rounded-md shadow-purple-500" >
                             <div className="font-semibold  text-left p-2  text-xl text-purple-700 "
-                            >Course Title : {title}
+                            >Course Title : <span className='text-purple-500 pl-5'>{title}</span>
                             </div>
                         </div>
                     )

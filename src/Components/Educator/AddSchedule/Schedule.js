@@ -15,7 +15,7 @@ const getDatafromLS = () => {
 }
 
 export const Schedule = (props) => {
-  console.log(props, "Course__Title")
+  // console.log(props, "Course__Title")
   // main array of objects state || schedules state || schedules array of objects
   const [schedules, setSchedules] = useState(getDatafromLS());
   const [topic, setTopic] = useState('');
@@ -42,6 +42,7 @@ export const Schedule = (props) => {
     setDate('');
     setSl('')
   }
+  const [successMsg, setSuccessMsg] = useState('')
 
   const deleteSchedule = (sl) => {
     const filterSchedules = schedules.filter((element, index) => {
@@ -56,25 +57,18 @@ export const Schedule = (props) => {
 
   function handleSubmit(e) {
     e.preventDefault();
-
-    // let scheduleDetail = new FormData();
-    // scheduleDetail.append("courseTitle",props.courseTitle);
-    // scheduleDetail.append("topic",topic);
-    // scheduleDetail.append("slotStart",slotStart);
-    // scheduleDetail.append("slotEnd",slotEnd);
-    // scheduleDetail.append("date",date);
-    // scheduleDetail.append("sl",sl);
     const scheduleDetail = localStorage.getItem('schedules');
-
-
-    EducatorService.addSchedule(scheduleDetail);
+    EducatorService.addSchedule(scheduleDetail)
+      .then((response) => {
+        setSuccessMsg(response.data.message)
+      });
 
   }
   return (
     <>
       {/* <h1>Course Schedule List</h1>
       <p>Add and View your Schedules </p> */}
-      <div className='grid grid-cols-2 gap-10 m-auto'>
+      <div className='grid grid-cols-3 gap-5 m-auto'>
 
         <div className=" mt-2 text-start">
           <form
@@ -112,13 +106,18 @@ export const Schedule = (props) => {
               Add More
             </button>
             <button className="border p-1 mt-4 text-lg rounded-lg bg-purple-900 text-white w-30 m-auto focus:outline-none focus:shadow-outline" type='submit' >Submit</button>
+            {successMsg ? (<>
+              <div className='text-center mt-6 text-3xl font-semibold text-purple-700 capitalize'>
+                {successMsg}
+              </div>
+            </>) : null}
           </form>
         </div>
-        <div className='w-fit gap-2 place-items-center'>
+        <div className='col-span-2 gap-2 place-items-center'>
           {schedules.length > 0 && <>
-            <div className='overflow-x-auto relative shadow-md sm:rounded-lg'>
+            <div className='overflow-x-auto relative shadow-md sm:rounded-lg ml-10'>
               <table className='w-full text-sm text-left text-purple-500 dark:text-purple-400'>
-                <thead className='text-xs text-purple-700 uppercase bg-purple-50 dark:bg-purple-700 dark:text-purple-400'>
+                <thead className='text-xs text-white uppercase bg-purple-50 dark:bg-purple-700 dark:text-white'>
                   <tr>
                     <th scope="col" className="py-2 px-4">SL#</th>
                     <th scope="col" className="py-2 px-4">Topic</th>
@@ -134,7 +133,7 @@ export const Schedule = (props) => {
                 </tbody>
               </table>
             </div>
-            <button className="border p-1 mt-2 text-lg rounded-lg bg-red-900 text-white w-32 m-auto focus:outline-none focus:shadow-outline "
+            <button className="border p-1 text-lg rounded-lg bg-red-700 text-white w-32 ml-56 mt-5 focus:outline-none focus:shadow-outline "
               onClick={() => setSchedules([])}>Remove All</button>
           </>}
           {schedules.length < 1 && <div className="w-full m-auto p-6 text-lg text-purple-900 border-2 rounded-md  overflow-auto">No schedules are added yet</div>}

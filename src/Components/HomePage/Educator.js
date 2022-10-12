@@ -9,7 +9,7 @@ const EducatorHome = () => {
         setLoading(true);
         EducatorService.getEducatorDashBoard().then(
             (response) => {
-                console.log('Educator content', response.data.message);
+                // console.log('Educator content', response.data.message);
                 setEducatorContent(response.data.message);
                 setLoading(false);
             },
@@ -41,7 +41,7 @@ const EducatorHome = () => {
                                 <video className='w-full h-48' controls >
                                     <source src={videoUrl} />
                                 </video>
-                                <div className='flex place-content-between text-gray-800 text-md items-center  m-1'>
+                                <div className='flex place-content-between text-purple-900 text-md pl-2 pr-2 m-1'>
                                     <h2>{courseTitle}</h2>
                                     <p >{instrument}</p>
                                 </div>
