@@ -1,41 +1,41 @@
-import React,{useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { View } from './View';
 import EducatorService from "../../Auth/educator.service"
 
 
 // getting the values of local storage
-const getDatafromLS=()=>{
+const getDatafromLS = () => {
   const data = localStorage.getItem('schedules');
-  if(data){
+  if (data) {
     return JSON.parse(data);
   }
-  else{
+  else {
     return []
-  } 
+  }
 }
 
 export const Schedule = (props) => {
-    console.log(props,"Course__Title")
+  console.log(props, "Course__Title")
   // main array of objects state || schedules state || schedules array of objects
-  const [schedules, setSchedules]=useState(getDatafromLS());
-  const [topic, setTopic]=useState('');
-  const [slotStart, setSlotStart]=useState('');
-  const [slotEnd, setSlotEnd]=useState('');
-  const [date, setDate]=useState('');
-  const [sl, setSl]=useState('');
+  const [schedules, setSchedules] = useState(getDatafromLS());
+  const [topic, setTopic] = useState('');
+  const [slotStart, setSlotStart] = useState('');
+  const [slotEnd, setSlotEnd] = useState('');
+  const [date, setDate] = useState('');
+  const [sl, setSl] = useState('');
 
-  const handleAddMoreSubmit=(e)=>{
+  const handleAddMoreSubmit = (e) => {
     e.preventDefault();
-    let schedule={
-    courseTitle:props.courseTitle,
-    topic,
-    slotStart,
-    slotEnd,
-    date,
-    sl
+    let schedule = {
+      courseTitle: props.courseTitle,
+      topic,
+      slotStart,
+      slotEnd,
+      date,
+      sl
 
     }
-    setSchedules([...schedules,schedule]);
+    setSchedules([...schedules, schedule]);
     setTopic('');
     setSlotStart('');
     setSlotEnd('');
@@ -43,18 +43,18 @@ export const Schedule = (props) => {
     setSl('')
   }
 
-  const deleteSchedule=(sl)=>{
-    const filterSchedules=schedules.filter((element,index)=>{
+  const deleteSchedule = (sl) => {
+    const filterSchedules = schedules.filter((element, index) => {
       return element.sl !== sl
     })
     setSchedules(filterSchedules);
   }
 
-  useEffect(()=>{
-    localStorage.setItem('schedules',JSON.stringify(schedules));
-  },[schedules])
+  useEffect(() => {
+    localStorage.setItem('schedules', JSON.stringify(schedules));
+  }, [schedules])
 
-  function handleSubmit(e){
+  function handleSubmit(e) {
     e.preventDefault();
 
     // let scheduleDetail = new FormData();
@@ -64,12 +64,12 @@ export const Schedule = (props) => {
     // scheduleDetail.append("slotEnd",slotEnd);
     // scheduleDetail.append("date",date);
     // scheduleDetail.append("sl",sl);
-    const data = localStorage.getItem('schedules');
+    const scheduleDetail = localStorage.getItem('schedules');
 
-    
-    EducatorService.addSchedule(data);
 
-}
+    EducatorService.addSchedule(scheduleDetail);
+
+  }
   return (
     <>
       {/* <h1>Course Schedule List</h1>
@@ -77,36 +77,36 @@ export const Schedule = (props) => {
       <div className='grid grid-cols-2 gap-10 m-auto'>
 
         <div className=" mt-2 text-start">
-          <form 
-          autoComplete="off" 
-          className=" text-purple-900  bg-white rounded  flex flex-col content-center mb-4 "
-          onSubmit={handleSubmit}>
-             <div className='mt-1'>
-             <label  className=" text-purple-900 text-sm font-bold mb-2">Topic</label>
-            <input type="text"  
-            className="shadow appearance-none border rounded w-full py-2 px-3 mb-2 text-purple-900 leading-tight focus:outline-none focus:shadow-outline" required
-            onChange={(e)=>setTopic(e.target.value)} value={topic}/>
-             </div >
+          <form
+            autoComplete="off"
+            className=" text-purple-900  bg-white rounded  flex flex-col content-center mb-4 "
+            onSubmit={handleSubmit}>
             <div className='mt-1'>
-            <label  className=" text-purple-900 text-sm font-bold mb-6">Time Slot</label>
-           <div className='flex gap-2 place-items-center'>
-           <input type="time" id='appt' className="shadow appearance-none border rounded w-full py-2 px-3 mb-2 text-purple-900 leading-tight focus:outline-none focus:shadow-outline" required
-            onChange={(e)=>setSlotStart(e.target.value)} value={slotStart}/>
-            <h1>To</h1>
-            <input type="time"  className="shadow appearance-none border rounded w-full py-2 px-3 mb-2 text-purple-900 leading-tight focus:outline-none focus:shadow-outline"id='appt' required
-            onChange={(e)=>setSlotEnd(e.target.value)} value={slotEnd}/>
-           </div>
+              <label className=" text-purple-900 text-sm font-bold mb-2">Topic</label>
+              <input type="text"
+                className="shadow appearance-none border rounded w-full py-2 px-3 mb-2 text-purple-900 leading-tight focus:outline-none focus:shadow-outline" required
+                onChange={(e) => setTopic(e.target.value)} value={topic} />
+            </div >
+            <div className='mt-1'>
+              <label className=" text-purple-900 text-sm font-bold mb-6">Time Slot</label>
+              <div className='flex gap-2 place-items-center'>
+                <input type="time" id='appt' className="shadow appearance-none border rounded w-full py-2 px-3 mb-2 text-purple-900 leading-tight focus:outline-none focus:shadow-outline" required
+                  onChange={(e) => setSlotStart(e.target.value)} value={slotStart} />
+                <h1>To</h1>
+                <input type="time" className="shadow appearance-none border rounded w-full py-2 px-3 mb-2 text-purple-900 leading-tight focus:outline-none focus:shadow-outline" id='appt' required
+                  onChange={(e) => setSlotEnd(e.target.value)} value={slotEnd} />
+              </div>
             </div>
 
             <div className='mt-1'>
-            <label className=" text-purple-900 text-sm font-bold mb-2">Date</label>
-            <input type="date"  className="shadow appearance-none border rounded w-full py-2 px-3 mb-2 text-purple-900 leading-tight focus:outline-none focus:shadow-outline" required
-            onChange={(e)=>setDate(e.target.value)} value={date}/>
+              <label className=" text-purple-900 text-sm font-bold mb-2">Date</label>
+              <input type="date" className="shadow appearance-none border rounded w-full py-2 px-3 mb-2 text-purple-900 leading-tight focus:outline-none focus:shadow-outline" required
+                onChange={(e) => setDate(e.target.value)} value={date} />
             </div>
             <div className='mt-1'>
-            <label className=" text-purple-900 text-sm font-bold mb-2" >Session No</label>
-            <input type="number"  className="shadow appearance-none border rounded w-full py-2 px-3 mb-2 text-purple-900 leading-tight focus:outline-none focus:shadow-outline" required
-            onChange={(e)=>setSl(e.target.value)} value={sl}></input>
+              <label className=" text-purple-900 text-sm font-bold mb-2" >Session No</label>
+              <input type="number" className="shadow appearance-none border rounded w-full py-2 px-3 mb-2 text-purple-900 leading-tight focus:outline-none focus:shadow-outline" required
+                onChange={(e) => setSl(e.target.value)} value={sl}></input>
             </div>
             <button className="border p-1 mt-4 text-lg rounded-lg bg-purple-900 text-white w-30 m-auto focus:outline-none focus:shadow-outline" onClick={handleAddMoreSubmit} >
               Add More
@@ -115,7 +115,7 @@ export const Schedule = (props) => {
           </form>
         </div>
         <div className='w-fit gap-2 place-items-center'>
-          {schedules.length>0&&<>
+          {schedules.length > 0 && <>
             <div className='overflow-x-auto relative shadow-md sm:rounded-lg'>
               <table className='w-full text-sm text-left text-purple-500 dark:text-purple-400'>
                 <thead className='text-xs text-purple-700 uppercase bg-purple-50 dark:bg-purple-700 dark:text-purple-400'>
@@ -130,12 +130,12 @@ export const Schedule = (props) => {
                   </tr>
                 </thead>
                 <tbody>
-                  <View schedules={schedules} deleteSchedule={deleteSchedule}/>
+                  <View schedules={schedules} deleteSchedule={deleteSchedule} />
                 </tbody>
               </table>
             </div>
             <button className="border p-1 mt-2 text-lg rounded-lg bg-red-900 text-white w-32 m-auto focus:outline-none focus:shadow-outline "
-            onClick={()=>setSchedules([])}>Remove All</button>
+              onClick={() => setSchedules([])}>Remove All</button>
           </>}
           {schedules.length < 1 && <div className="w-full m-auto p-6 text-lg text-purple-900 border-2 rounded-md  overflow-auto">No schedules are added yet</div>}
         </div>
