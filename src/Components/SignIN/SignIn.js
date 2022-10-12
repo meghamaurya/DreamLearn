@@ -7,14 +7,11 @@ import Carousel from "../Hero Section/Carousel";
 import AuthService from "../Auth/auth.service";
 import Cards from '../Cards'
 import card from '../Cards/cards.json';
-function SignIn(props) {
+function SignIn() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-    console.log(props);
-    // const learner = props.learner;
-    // const educator = props.educator;
     const validationSchema = Yup.object().shape({
         username: Yup.string().required('**Username is required'),
         password: Yup.string().required('**Password is required')
@@ -27,21 +24,18 @@ function SignIn(props) {
 
         try {
             await AuthService.signin(username, password).then(
-                (response) => {
+                () => {
                     setLoading(true);
-                    console.log(response, 'signin res')
-                    if (props.learner) {
+                    const data = JSON.parse(localStorage.getItem('user'))
+                    console.log(data.role, 'signin res')
+                    if (data.role === "ROLE_LEARNER") {
                         console.log('learner home')
-                        navigate('/home')   //learner home 
+                        navigate('/learner')   //learner home 
                     }
-                    if (props.educator) {
+                    if (data.role === "ROLE_EDUCATOR") {
                         console.log('educator home')
                         navigate('/educator')
                     }
-                    //  else {
-                    //     navigate('/educator')   //educator home
-                    // }
-                    // if
                     window.location.reload();
                 },
                 (error) => {

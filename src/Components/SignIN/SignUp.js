@@ -8,6 +8,7 @@ import AuthService from "../Auth/auth.service";
 
 
 function SignUp() {
+  const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,6 +17,7 @@ function SignUp() {
   const navigate = useNavigate('');
 
   const validationSchema = Yup.object().shape({
+    name: Yup.string().required('**Name is required'),
     username: Yup.string().required('**Username is required'),
     email: Yup.string().required('**Email is required'),
     password: Yup.string().required('**Password is required')
@@ -24,15 +26,14 @@ function SignUp() {
       .oneOf([Yup.ref('password'), null], '**confirm password does not match')
   });
 
-
   const onSubmit = async (data) => {
     console.log(JSON.stringify(data, null, 2))
     console.log({ role })
     try {
-      await AuthService.signup(username, email, password, role).then((response) => {
+      await AuthService.signup(name, username, email, password, role).then((response) => {
         console.log('succuessfully sign up', response);
-        navigate('/signin')
-        //window.location.reload();
+        // navigate('/signin')
+        // window.location.reload();
       },
         (error) => {
           console.log(error);
@@ -59,6 +60,17 @@ function SignUp() {
       <div className="w-full max-w-80% m-auto flex justify-start items-start ">
         <div className="w-full">
           <form className="bg-white shadow-md rounded px-6 pt-6 pb-1 mb-3" onSubmit={handleSubmit(onSubmit)}>
+            <div className='mb-4'>
+              <input
+                placeholder='name'
+                name='name'
+                type="text"
+                {...register('name')}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.username ? 'text-red' : ''}`} />
+              <div className='text-red-600 font-semibold'>{errors.name?.message}</div>
+            </div>
 
             <div className='mb-4'>
               <input
