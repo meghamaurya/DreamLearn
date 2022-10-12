@@ -2,11 +2,11 @@ import React from "react";
 
 function About() {
   return (
-    <div className="w-8/12 m-auto py-14 pb-20 select-none">
+    <div className="w-8/12 m-auto py-14 pb-10 select-none">
       <h1 className="text-3xl px-20 opacity-4 shadow-md text-purple-900 inline-block">
         About Us
       </h1>
-      <p className="mt-4 px-20 pt-4 pb-5 text-purple-700 text-lg">
+      <p className="mt-4 px-20 pt-6 pb-5 text-purple-700 text-lg">
         We serve you a platform. Where, who have the ability to teach musical
         instruments can enroll themselves as an Educator. And those who want to
         learn their dream instrument can enroll themselves as a learner and
@@ -31,7 +31,7 @@ function About() {
       <h2 className="text-3xl  px-20 opacity-4 text-purple-900 shadow-md mt-10 inline-block">
         Our Idea to build this Web App{" "}
       </h2>
-      <p className="mt-4  px-24 pt-4 pb-5 text-purple-700 text-lg">
+      <p className="mt-4  px-24 pt-4 pb-2 text-purple-700 text-lg">
         A platform that takes all Instruments learning to one place, one on one
         online live classes, detailed theory explanation of instruments with
         notes availability. Live doubt clearing sessions.
