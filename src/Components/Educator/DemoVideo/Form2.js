@@ -4,14 +4,13 @@ const Form2 = (props) => {
   console.log(props, "videoInput")
 
   const [data, setData] = useState({
-    title: "",
-    instrument: "",
+    courseTitle: "",
     video: null,
 
   });
   console.log(data)
   const [formSubmit, setFormSubmit] = useState(false);
-  let errorsObj = { title: '', instrument: '', video: '' };
+  let errorsObj = { courseTitle: '', video: '' };
   const [errors, setErrors] = useState(errorsObj);
   // const [disable, setDisable] = useState(false);
 
@@ -19,12 +18,8 @@ const Form2 = (props) => {
     e.preventDefault();
     let error = false;
     const errorObj = { ...errorsObj };
-    if (data.title === '') {
-      errorObj.title = "** Required";
-      error = true;
-    }
-    if (data.instrument === '') {
-      errorObj.instrument = "** Required";
+    if (data.courseTitle === '') {
+      errorObj.courseTitle = "** Required";
       error = true;
     }
     // if (data.video === '') {
@@ -35,13 +30,15 @@ const Form2 = (props) => {
     if (!error) {
       console.log('form submit')
       setFormSubmit(false)
-      let userDetail = new FormData();
-      userDetail.append("title", data.title);
-      userDetail.append("instrument", data.instrument);
-      userDetail.append("demoVideo", props.video);
+      let videoDetail = new FormData();
+      videoDetail.append("courseTitle", data.courseTitle);
+      videoDetail.append("demoVideo", props.video);
       //for upload vide0 use only "demoVideo" key
       //for upload image use only "image" key
-      EducatorService.uploadDemoVideo(userDetail);
+      EducatorService.uploadDemoVideo(videoDetail)
+        .then((response) => {
+          console.log(response.data)
+        });
       setTimeout(function () {
         setFormSubmit(true);
       }, 9000);
@@ -66,12 +63,12 @@ const Form2 = (props) => {
     <div className=" mt-10 ">
       <form onSubmit={handleSubmit} >
         <div className="mb-1">
-          <input type="text" id="title" placeholder='Video Title'
-            onChange={(e) => handleChange(e)} value={data.title}
+          <input type="text" id="courseTitle" placeholder='Course Title'
+            onChange={(e) => handleChange(e)} value={data.courseTitle}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
         </div>
-        {errors.title && <div className="text-red-600 font-semibold mb-3">{errors.title}</div>}
-        <div className="mb-1 mt-4">
+        {errors.courseTitle && <div className="text-red-600 font-semibold mb-3">{errors.courseTitle}</div>}
+        {/* <div className="mb-1 mt-4">
           <select onChange={(e) => handleChange(e)} name="instrument" id="instrument"
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
             <option >Select Instrument</option>
@@ -86,8 +83,8 @@ const Form2 = (props) => {
             <option value="trumpet" id='trumpet'>Trumpet</option>
             <option value="violin" id='violin'>Violin</option>
           </select>
-        </div>
-        {errors.instrument && <div className="text-red-600 font-semibold mb-3">{errors.instrument}</div>}
+        </div> */}
+        {/* {errors.instrument && <div className="text-red-600 font-semibold mb-3">{errors.instrument}</div>} */}
         <div className="mb-4">
           <button className="border p-1 mt-2 text-lg rounded-lg bg-purple-900 text-white w-20 m-auto focus:outline-none focus:shadow-outline" type='submit' >submit</button>
         </div>

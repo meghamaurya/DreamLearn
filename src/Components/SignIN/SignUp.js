@@ -31,9 +31,9 @@ function SignUp() {
     console.log({ role })
     try {
       await AuthService.signup(name, username, email, password, role).then((response) => {
-        console.log('succuessfully sign up', response);
-        // navigate('/signin')
-        // window.location.reload();
+        // console.log('succuessfully sign up', response);
+        navigate('/signin')
+        window.location.reload();
       },
         (error) => {
           console.log(error);
