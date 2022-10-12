@@ -1,34 +1,75 @@
-import axios from "axios";
+
+import { Fragment } from 'react'
+import { Menu, Transition } from '@headlessui/react'
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom"
+import LearnerService from "../Auth/learner.service";
 // import Instrument from "../Instrument";
+
+const instrumentTitle = [
+    "tabla", "dholak", "flute", "veena", "harmonium", "piano", "guitar", "drums", "trumpet", "violin"
+]
 const LearnerDropdown = () => {
-    const [instrumentList, setInstrumentList] = useState(false);
-    const [instruments, setInstruments] = useState([]);
+    const [instruments, setInstruments] = useState("");
     const navigate = useNavigate();
     useEffect(() => {
-        axios.get('https://fakestoreapi.com/products?limit=10')
-            .then((res) => {
-                console.log("instrumentsDD", res)
-                setInstruments(res.data);
-            })
-    }, [])
-    const showInstrumentList = () => {
-        setInstrumentList(true);
-    }
-    const hideInstrumentList = () => {
-        setInstrumentList(false);
+        console.log(instruments, 'learner')
+
+        if (instruments !== '') {
+            let instrument = {
+                "instrument": instruments
+            }
+            LearnerService.instrumentDD(instrument).then(() => {
+                navigate('/courses');
+            });
+        }
+    }, [instruments])
+
+    const handleClick = (title) => {
+        setInstruments(title)
+
     }
 
+
     return (<>
-        <div className='productList'>
+        <div className='productList z-30'>
 
             <div className='z-10 pl-24 mt-8 text-xl  text-purple-900 shadow-md shadow-purple-300'>
                 <ul className="flex ">
                     <li className="relative pr-2">
-                        <button onMouseEnter={showInstrumentList} onMouseLeave={hideInstrumentList} className="font-medium">Instruments</button>
+                        <Menu as="div" className="relative inline-block text-left">
+                            <div>
+                                <Menu.Button className="inline-flex w-full justify-center bg-white px-4  text-lg font-medium text-purple-900 shadow-sm hover:bg-gray-50 ">
+                                    Instruments
 
-                        {instrumentList ?
+                                </Menu.Button>
+                            </div>
+
+                            <Transition
+                                as={Fragment}
+                                enter="transition ease-out duration-100"
+                                enterFrom="transform opacity-0 scale-95"
+                                enterTo="transform opacity-100 scale-100"
+                                leave="transition ease-in duration-75"
+                                leaveFrom="transform opacity-100 scale-100"
+                                leaveTo="transform opacity-0 scale-95"
+                            >
+                                <Menu.Items className="absolute right-0 z-10 mt-2 w-32 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                    <div className="py-1">
+                                        {instrumentTitle.map((title, index) => {
+                                            return (
+                                                <Menu.Items key={index} className="hover:font-semibold cursor-pointer capitalize" onClick={() => handleClick(title)}>{title}</Menu.Items>
+                                            )
+                                        })}
+
+                                    </div>
+                                </Menu.Items>
+                            </Transition>
+                        </Menu>
+
+
+
+                        {/* {instrumentList ?
                             <div className="absolute pr-6 pl-6 shadow-md shadow-purple-500 rounded-md bg-white p-4" onMouseEnter={showInstrumentList} onMouseLeave={hideInstrumentList} >
                                 {instruments?.map((instrument) => {
                                     return (
@@ -38,10 +79,10 @@ const LearnerDropdown = () => {
                                     )
                                 })}
                             </div>
-                            : null}
+                            : null} */}
                     </li>
                     <li >
-                        <button className="font-medium pl-2 pr-2" onClick={() => navigate("/courses")}>Courses</button>
+                        <button className="font-medium pl-2 pr-2" onClick={() => navigate("/courses")}>My Courses</button>
                     </li>
                     <li >
                         <button className="font-medium pl-2 pr-2" onClick={() => navigate("/allschedule")}>Schedule</button>
