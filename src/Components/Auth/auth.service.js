@@ -21,7 +21,7 @@ const signin = async (username, password) => {
             username,
             password,
         }).then((response) => {
-            if (response.data.accessToken) {
+            if (response.data) {
                 localStorage.setItem("user", JSON.stringify(response.data));
 
             }
