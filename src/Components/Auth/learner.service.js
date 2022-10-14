@@ -11,20 +11,20 @@ const instrumentTitle = (instrument) => {
 
 }
 
-const courseTitle = () => {
-    return axios.get(API_URL + "api/learner/DetailedCourseInfo/:courseTitle", { headers: authHeader() });
+const courseTitle = (courseTitle) => {
+    return axios.get(API_URL + `api/learner/DetailedCourseInfo/${courseTitle}`, { headers: authHeader() });
 }
 
-const registerCourse = () => {
-    return axios.post(API_URL + "api/learner/RegisterCourse/:courseID", { headers: authHeader() });
+const registerCourse = (courseID) => {
+    return axios.get(API_URL + `api/learner/RegisterCourse/${courseID}`, { headers: authHeader() });
 }
 
 const registeredCourse = () => {
     return axios.get(API_URL + "api/learner/RegisteredCourses", { headers: authHeader() });
 }
 
-const coursesSchedule = () => {
-    return axios.get(API_URL + "api/learner/RegisteredCoursesSchedule/:courseTitle", { headers: authHeader() });
+const coursesSchedule = (courseTitle) => {
+    return axios.get(API_URL + `api/learner/RegisteredCoursesSchedule/${courseTitle}`, { headers: authHeader() });
 }
 
 const LearnerService = {
