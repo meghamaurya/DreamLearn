@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import LearnerService from "../Auth/learner.service";
 
@@ -7,11 +7,19 @@ const Modal = () => {
     const [popup, setPopup] = useState('');
     const params = useParams();
     const { courseID } = params;
-    useEffect(async () => {
-        await LearnerService.registerCourse(courseID)
+    useEffect(() => {
+        LearnerService.registerCourse(courseID)
             .then((res) => {
-                console.log("courseID", res.data.message)
+                console.log("courseID", res.data.success)
                 setPopup(res.data.message);
+                if (res.data.success === false) {
+                    // setResponseFailed(res.data.message);
+                    console.log("fail")
+                    setPopup("Course already registered");
+                } else {
+                    setPopup(res.data.message);
+                }
+
             },
                 (err) => {
                     console.log(err)

@@ -136,7 +136,7 @@ export const Schedule = (props) => {
             <button className="border p-1 text-lg rounded-lg bg-red-700 text-white w-32 ml-56 mt-5 focus:outline-none focus:shadow-outline "
               onClick={() => setSchedules([])}>Remove All</button>
           </>}
-          {schedules.length < 1 && <div className="w-full m-auto p-6 text-lg text-purple-900 border-2 rounded-md  overflow-auto">No schedules are added yet</div>}
+          {schedules.length < 1 ? <div className="w-full m-auto p-6 text-lg text-purple-900 border-2 rounded-md  overflow-auto">No schedules are added yet</div> : ''}
         </div>
 
       </div>

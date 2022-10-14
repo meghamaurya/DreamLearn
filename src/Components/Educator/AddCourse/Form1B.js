@@ -78,7 +78,7 @@ const Form1B = (props) => {
             courseDetail.append("image", props.image);
 
             EducatorService.uploadCourse(courseDetail).then((response) => {
-                console.log("successMsg", response.data.message)
+                // console.log("successMsg", response.data.message)
                 setSuccessMsg(response.data.message);
             });
         }

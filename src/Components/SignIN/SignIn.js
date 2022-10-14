@@ -19,7 +19,7 @@ function SignIn() {
 
 
     const onSubmit = async (data, e) => {
-        console.log(JSON.stringify(data, null, 2))
+        // console.log(JSON.stringify(data, null, 2))
         e.preventDefault();
 
         try {
@@ -29,7 +29,7 @@ function SignIn() {
                     const data = JSON.parse(localStorage.getItem('user'))
                     console.log(data.role, 'signin res')
                     if (data.role === "ROLE_LEARNER") {
-                        console.log('learner home')
+                        console.log('learner home', data)
                         navigate('/learner')   //learner home 
                     }
                     if (data.role === "ROLE_EDUCATOR") {

@@ -9,11 +9,10 @@ import LandingPage from './Components/LandingPage';
 import Comp from './Components/NavFooter/Comp'
 import SignIn from './Components/SignIN/SignIn';
 // import SignUp from './Components/SignIN/SignUp';
-import Home from './Components/HomePage';
 import AuthService from './Components/Auth/auth.service';
 import LearnerDropdown from './Components/SecondNavbar/LearnerDD'
 import EducatorDropdown from './Components/SecondNavbar/EducatorDD';
-import Instrument from './Components/Instrument';
+import InstrumentCourses from './Components/InstrumentCourses';
 import Register from './Components/Register';
 import Courses from './Components/Courses'
 import Schedule from './Components/Schedule';
@@ -21,11 +20,12 @@ import About from './Components/AboutContact/About'
 import Contact from './Components/AboutContact/Contact';
 import Profile from './Components/Profile';
 // import PrivateRoutes from './Components/ProtectedRoutes';
-import AllSchedule from './Components/AllSchedule';
+// import AllSchedule from './Components/AllSchedule';
 import AddDemoVideo from './Components/Educator/DemoVideo/AddVideo';
 import AddCourse from './Components/Educator/AddCourse/AddCourse';
 import AddSchedule from './Components/Educator/AddSchedule/AddCourseSchedule';
 import MyCourses from './Components/Educator/MyCourses/MyCourse';
+import Modal from './Components/Modal';
 function App() {
   const [learner, setLearner] = useState(false);
   const [educator, setEducator] = useState(false);
@@ -33,7 +33,7 @@ function App() {
 
   useEffect(() => {
     const user = AuthService.getCurrentUser();
-    console.log(user, 'currentuser')
+    // console.log(user, 'currentuser')
     if (user) {
       setCurrentUser(user);
       setLearner(user.role.includes("ROLE_LEARNER"));
@@ -56,23 +56,21 @@ function App() {
           <Route path='/signin' element={<SignIn learner={learner} educator={educator} />} />
           <Route path='/learner' element={<LearnerHome />} />
           <Route path='/educator' element={<EducatorHome />} />
-
-          {/* <Route path='/learner' element={learner ? <LearnerHome /> : <Navigate to="/" />} /> */}
-          {/* <Route path='/educator' element={educator ? <EducatorHome /> : <Navigate to="/" />} /> */}
           <Route path='/profile' element={<Profile />} />
-          <Route path='/home' element={<Home />} />
-          <Route path='/instruments/:instrument' element={<Instrument />} />
-          {/* <Route path='/instruments/:register' element={<Register />} /> */}
-          <Route path='/instruments/:instrument/:register' element={<Register />} />
+          <Route path='/instruments/:instrument' element={<InstrumentCourses />} />
+          <Route path='/instruments/:instrument/:courseTitle' element={<Register />} />
+          <Route path='/modal/:courseID' element={<Modal />} />
           <Route path='/courses' element={<Courses />} />
-          <Route path='/courses/:schedule' element={<Schedule />} />
-          <Route path='/allschedule' element={<AllSchedule />} />
+          <Route path='/courses/:courseTitle' element={<Schedule />} />
+          {/* <Route path='/allschedule' element={<AllSchedule />} /> */}
+          {/* educator routes */}
           <Route path='/adddemovideo' element={<AddDemoVideo />} />
           <Route path='/addcourse' element={<AddCourse />} />
           <Route path='/addschedule' element={<AddSchedule />} />
           <Route path='/mycourses' element={<MyCourses />} />
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
+          {/* <Route path="*" element={<NotFound />} /> */}
         </Routes>
         <Comp />
         <Footer />

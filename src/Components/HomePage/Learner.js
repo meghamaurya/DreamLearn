@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import AuthService from '../Auth/auth.service';
 import LearnerService from '../Auth/learner.service';
 
 const LearnerHome = () => {
     const [learnerContent, setLearnerContent] = useState([]);
     const [loading, setLoading] = useState(false);
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     useEffect(() => {
         setLoading(true);
         LearnerService.getLearnerDashBoard().then(
@@ -17,11 +17,11 @@ const LearnerHome = () => {
                 setLoading(false);
             },
             (error) => {
-                console.log('private page', error);
+                console.log('learner home page', error);
                 //invalid token
                 if (error.response && error.response.status === 403) {
                     AuthService.logout();
-                    Navigate('/signin');
+                    navigate('/signin');
                     window.location.reload();
                 }
             }
@@ -29,8 +29,8 @@ const LearnerHome = () => {
     }, [])
     //need to use video card compnent
     return (
-        <div className="max-w-[1250px] mx-auto">
-            <h3 className='text-center mt-8 text-3xl  text-purple-900 shadow-md shadow-purple-300 underline underline-offset-2'>Demo Classes</h3>
+        <div className="max-w-[1250px] mx-auto ">
+            <h3 className='text-center mt-8 text-3xl  text-purple-900 underline underline-offset-2'>Demo Classes</h3>
 
             {learnerContent.length === 0 && loading ? (
                 <div className="text-center">
@@ -45,14 +45,20 @@ const LearnerHome = () => {
                 (learnerContent.map((data) => {
                     const { id, educator, instrument, videoUrl } = data;
                     return (
-                        <div className='content-start inline-block m-4 mt-16'>
-                            <div key={id} className="inline-block w-80 h-56 overflow-hidden object-cover rounded-lg shadow-lg shadow-purple-500 mb-10" >
-                                <video className='w-full h-48' controls >
+                        <div className='content-start inline-block m-9 mt-16'>
+                            <div key={id} className="inline-block w-80 h-64 overflow-hidden object-cover rounded-lg shadow-lg shadow-purple-500 mb-10" >
+                                <video className='w-full h-48 z-10' controls >
                                     <source src={videoUrl} />
                                 </video>
-                                <div className='flex place-content-between text-purple-900 text-md items-center  m-1'>
-                                    <h2>{educator}</h2>
-                                    <p >{instrument}</p>
+                                <div className='flex place-content-between capitalize text-purple-900 text-md items-center  m-1'>
+                                    <div className='text-start'>
+                                        <h3 className='font-semibold'>Educator</h3>
+                                        <p className=''>{educator}</p>
+                                    </div>
+                                    <div className='text-start'>
+                                        <h3 className='font-semibold'>Instrument</h3>
+                                        <p >{instrument}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

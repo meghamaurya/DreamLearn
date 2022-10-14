@@ -39,9 +39,6 @@ const Form2 = (props) => {
         .then((response) => {
           console.log(response.data)
         });
-      setTimeout(function () {
-        setFormSubmit(true);
-      }, 9000);
     }
 
   }
