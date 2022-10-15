@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Nav from './Components/NavFooter/Nav';
 import Footer from './Components/NavFooter/Footer';
@@ -26,6 +26,7 @@ import AddCourse from './Components/Educator/AddCourse/AddCourse';
 import AddSchedule from './Components/Educator/AddSchedule/AddCourseSchedule';
 import MyCourses from './Components/Educator/MyCourses/MyCourse';
 import Modal from './Components/Modal';
+import PageNotFound from './Components/NotFound';
 function App() {
   const [learner, setLearner] = useState(false);
   const [educator, setEducator] = useState(false);
@@ -70,7 +71,7 @@ function App() {
           <Route path='/mycourses' element={<MyCourses />} />
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
-          {/* <Route path="*" element={<NotFound />} /> */}
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
         <Comp />
         <Footer />
