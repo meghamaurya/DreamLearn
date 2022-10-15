@@ -1,67 +1,90 @@
 import React, { useState } from 'react'
 import EducatorService from '../../Auth/educator.service';
 const Form2 = (props) => {
-   
-   console.log(props,"videoInput")
+  console.log(props, "videoInput")
 
-    const [data,setData]=useState({
-        title:"",
-        instrument:"",
-        video:null,
-       
-    });
-    console.log(data)
-    function handleSubmit(e){
-        e.preventDefault();
+  const [data, setData] = useState({
+    courseTitle: "",
+    video: null,
 
-        let userDetail = new FormData();
-        userDetail.append("title",data.title);
-        userDetail.append("instrument",data.instrument);
-        userDetail.append("demoVideo",props.video);
-        //for upload vide0 use only "demoVideo" key
-        //for upload image use only "image" key
-        EducatorService.uploadDemoVideo(userDetail);
+  });
+  console.log(data)
+  const [formSubmit, setFormSubmit] = useState(false);
+  let errorsObj = { courseTitle: '', video: '' };
+  const [errors, setErrors] = useState(errorsObj);
+  // const [disable, setDisable] = useState(false);
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    let error = false;
+    const errorObj = { ...errorsObj };
+    if (data.courseTitle === '') {
+      errorObj.courseTitle = "** Required";
+      error = true;
+    }
+    // if (data.video === '') {
+    //   errorObj.video = "** Required";
+    //   error = true;
+    // }
+    setErrors(errorObj);
+    if (!error) {
+      console.log('form submit')
+      setFormSubmit(false)
+      let videoDetail = new FormData();
+      videoDetail.append("courseTitle", data.courseTitle);
+      videoDetail.append("demoVideo", props.video);
+      //for upload vide0 use only "demoVideo" key
+      //for upload image use only "image" key
+      EducatorService.uploadDemoVideo(videoDetail)
+        .then((response) => {
+          console.log(response.data)
+        });
+      setTimeout(function () {
+        setFormSubmit(true);
+      }, 9000);
     }
 
-    function handleChange(e){
-        const newdata={...data};
-        newdata[e.target.id]=e.target.value;
-        setData(newdata)
-        console.log(newdata)
+  }
 
-    }
+  function handleChange(e) {
+    const newdata = { ...data };
+    newdata[e.target.id] = e.target.value;
+    setData(newdata)
+    console.log(newdata)
+
+  }
+
+  const handleReload = () => {
+    window.location.reload()
+  }
+
 
   return (
-    <div className="text-start w-96 ">
-        <form onSubmit={(e)=>handleSubmit(e)} >
-           <div className="mb-4">
-            <input type="text" id="title" placeholder='Video Title'
-            onChange={(e)=>handleChange(e)} value={data.title} 
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
+    <div className=" mt-10 ">
+      <form onSubmit={handleSubmit} >
+        <div className="mb-1">
+          <input type="text" id="courseTitle" placeholder='Course Title'
+            onChange={(e) => handleChange(e)} value={data.courseTitle}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+        </div>
+        {errors.courseTitle && <div className="text-red-600 font-semibold mb-3">{errors.courseTitle}</div>}
+       
+       
+        <div className="mb-4">
+          <button className="border p-1 mt-2 text-lg rounded-lg bg-purple-900 text-white w-20 m-auto focus:outline-none focus:shadow-outline" type='submit' >submit</button>
+        </div>
+        {formSubmit ? (
+          <>
+            <div className='text-center mt-6 text-4xl font-semibold text-purple-900'>
+              Video Uploaded
             </div>
-           <div className="mb-4">
-            <select onChange={(e)=>handleChange(e)} name="instrument" id="instrument" 
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                <option >Select Instrument</option>
-                <option value="tabla"id='tabla' >Tabla</option>
-                <option value="dholak"id='dholak'>Dholak</option>
-                <option value="Flute"id='Flute'>Flute</option>
-                <option value="veena"id='veena'>Veena</option>
-                <option value="harmonium"id='harmonium'>Harmonium</option>
-                <option value="piano"id='piano'>Piano</option>
-                <option value="gitar" id='gitar'>Gitar</option>
-                <option value="drups" id='drums'>Drums</option>
-                <option value="trumpet" id='trumpet'>Trumpet</option>
-                <option value="violin"id='violin'>Violin</option>
-            </select>
+            <div className="mb-4">
+              <button className="border p-1 mt-4 text-lg rounded-lg bg-purple-900 text-white w-30 m-auto focus:outline-none focus:shadow-outline" type='submit' onClick={handleReload}>Add More Video</button>
             </div>
-           <div className="mb-4">
-             <button  className="bg-purple-900 hover:bg-purple-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type='submit'>submit</button>
-             </div>
-             
-        </form>
-      
+          </>) : null}
+
+      </form>
+
     </div>
   )
 }

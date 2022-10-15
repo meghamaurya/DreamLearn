@@ -3,8 +3,8 @@ import VideoInput from './VideoInput'
 
 const AddDemoVideo = () => {
   return (
-    <div className='pl-96 place-content-center'>
-      <VideoInput/>
+    <div className='w-3/12 m-auto '>
+      <VideoInput />
 
     </div>
   )
