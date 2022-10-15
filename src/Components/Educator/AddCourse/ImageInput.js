@@ -1,22 +1,22 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import Form1B from "./Form1B";
 
 
 export default function ImageInput(props) {
-    const [showForm1B,setShowForm1B]=useState(false)
+  const [showForm1B, setShowForm1B] = useState(false)
 
   const { width, height } = props;
 
   const inputRef = React.useRef();
 
   const [source, setSource] = React.useState();
-  const[uploadImage,setUploadImage]=React.useState()
+  const [uploadImage, setUploadImage] = React.useState()
 
   const handleFileChange = (event) => {
 
     const file = event.target.files[0];
     setUploadImage(file)
-    console.log(file,"file")
+    console.log(file, "file")
     const url = URL.createObjectURL(file);
     setSource(url);
   };
@@ -24,23 +24,15 @@ export default function ImageInput(props) {
   const handleChoose = (event) => {
     inputRef.current.click();
   };
-  
+
   const uploadDemoImage = () => {
     setShowForm1B(true);
   }
   return (
-    <div className="h-96 w-96 bg-green-400">
-      <input
-        ref={inputRef}
-        className="h-48 w-48"
-        type="file"
-        onChange={handleFileChange}
-        accept="png,jpg,jpej"
-      />
-      {!source && <button onClick={handleChoose}>Choose</button>}
+    <div className=" mt-16 m-auto pb-20 flex flex-col ">
       {source && (
-        <img 
-          className="items-start w-48 h-48"
+        <img
+          className="m-auto w-72 h-48 mb-2 rounded-lg"
           width={width}
           height={height}
           controls
@@ -48,11 +40,20 @@ export default function ImageInput(props) {
           alt="preview"
         />
       )}
-      <div className="h-48 w-48">{source || "Nothing selectd"}</div>
-      <button 
-      className="bg-purple-900 hover:bg-purple-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-      onClick={uploadDemoImage} >Upload Image</button>
-      {showForm1B && <Form1B image={uploadImage} />  }
+      <div className="w-full m-auto p-6 text-lg text-purple-900 border-2 rounded-md  overflow-auto">{source || "No Image Selected"}</div>
+      <input
+        ref={inputRef}
+        className="w-48 invisible"
+        type="file"
+        onChange={handleFileChange}
+        accept="png,jpg"
+      />
+      {!source && <button className="border p-1 mt-6 text-lg rounded-lg bg-purple-900 text-white w-32 m-auto" onClick={handleChoose}>Choose File</button>}
+
+      <button
+        className="border p-1 mt-2 text-lg rounded-lg bg-purple-900 text-white w-32 m-auto focus:outline-none focus:shadow-outline"
+        onClick={uploadDemoImage} >Upload Image</button>
+      {showForm1B && <Form1B image={uploadImage} />}
     </div>
   );
 }
