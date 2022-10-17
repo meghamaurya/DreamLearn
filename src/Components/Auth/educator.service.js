@@ -8,20 +8,24 @@ const getAllData = () => {
 }
 
 const getEducatorDashBoard = () => {
-    return axios.get(API_URL + "api/authorise/educator/showDemoVideos", { headers: authHeader() });
+    return axios.get(API_URL + "api/educator/showDemoVideos", { headers: authHeader() });
 }
 const uploadDemoVideo = async (videoDetail) => {
-    await axios.post(API_URL + "api/authorise/educator/addDemoVideo", videoDetail, { headers: { ...authHeader(), 'Content-Type': 'multipart/form-data' }, })
+    await axios.post(API_URL + "api/educator/addDemoVideo", videoDetail, { headers: { ...authHeader(), 'Content-Type': 'multipart/form-data' }, })
 
 }
 const uploadCourse = (courseDetail) => {
-    return axios.post(API_URL + "api/authorise/educator/addCourse", courseDetail, { headers: { ...authHeader(), 'Content-Type': 'multipart/form-data' }, });
+    return axios.post(API_URL + "api/educator/addCourse", courseDetail, { headers: { ...authHeader(), 'Content-Type': 'multipart/form-data' }, });
 }
-const addSchedule = (scheduleDetail) => {
-    return axios.post(API_URL + "api/authorise/educator/addSchedule", scheduleDetail, { headers: { ...authHeader(), 'Content-Type': 'multipart/form-data' }, });
+
+const addSchedule = (userDetail) => {
+    return axios.post(API_URL + "api/educator/addSchedule", userDetail,{ headers: {...authHeader(),'Content-Type': 'application/json'},  });
 }
 const MyCourse = () => {
-    return axios.get(API_URL + "api/authorise/educator/addedCourses", { headers: { ...authHeader() }, });
+    return axios.get(API_URL + "api/educator/addedCourses", { headers: { ...authHeader() }, });
+}
+const showAddedCourseSchedule = (courseTitle) => {
+    return axios.get(API_URL + `api/educator/showAddedCourseSchedule/${courseTitle}`,{headers: { ...authHeader() }, });
 }
 
 const EducatorService = {
@@ -30,7 +34,8 @@ const EducatorService = {
     uploadDemoVideo,
     uploadCourse,
     addSchedule,
-    MyCourse
+    MyCourse,
+    showAddedCourseSchedule
 }
 
 export default EducatorService;

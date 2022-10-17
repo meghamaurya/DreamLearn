@@ -17,8 +17,8 @@ const Courses = () => {
                 setCourses(response.data.message);
                 setLoading(false);
             } catch (err) {
-                console.log(err.response.data);
-                setError(err.response.data);
+                // console.log(err.response.data.message);
+                setError(err.response.data.message);
                 setLoading(false);
                 setShowErr(true);
                 if (err.response.data.message === "Unauthorized!") {

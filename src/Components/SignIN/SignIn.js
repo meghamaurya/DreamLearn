@@ -11,6 +11,10 @@ function SignIn() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
+    const [usernameError, setUsernameError] = useState([]);
+    const [passwordError, setPasswordError] = useState([]);
+    const [showErr, setShowErr] = useState(false);
+    const [err, setErr] = useState([]);
     const navigate = useNavigate();
     const validationSchema = Yup.object().shape({
         username: Yup.string().required('**Username is required'),
@@ -27,23 +31,35 @@ function SignIn() {
                 () => {
                     setLoading(true);
                     const data = JSON.parse(localStorage.getItem('user'))
-                    console.log(data.role, 'signin res')
+                    // console.log(data.role, 'signin res')
                     if (data.role === "ROLE_LEARNER") {
-                        console.log('learner home', data)
+                        // console.log('learner home', data)
                         navigate('/learner')   //learner home 
                     }
                     if (data.role === "ROLE_EDUCATOR") {
-                        console.log('educator home')
+                        // console.log('educator home')
                         navigate('/educator')
                     }
                     window.location.reload();
                 },
-                (error) => {
-                    console.log(error);
+                (err) => {
+                    // console.log(err);
+
+                    if (err.response.data.message === "User Not found.") {
+                        setUsernameError(err.response.data.message);
+                        setShowErr(true);
+                        setLoading(false);
+                    }
+                    if (err.response.data.message === "Invalid Password!") {
+                        setPasswordError(err.response.data.message);
+                        setShowErr(true);
+                        setLoading(false);
+                    }
                 }
             );
         } catch (err) {
             console.log(err);
+            setErr(err.config.message);
         }
     };
 
@@ -124,7 +140,7 @@ function SignIn() {
                                     onChange={(e) => setUsername(e.target.value)}
                                     className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.username ? 'is-invalid' : ''}`}
                                 />
-                                <div className="text-red-600 font-semibold">{errors.username?.message}</div>
+                                {showErr ? <div className="text-red-600 font-semibold">{usernameError}</div> : ''}
                             </div>
 
                             <div className="mb-4">
@@ -137,8 +153,9 @@ function SignIn() {
                                     onChange={(e) => setPassword(e.target.value)}
                                     className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.password ? 'is-invalid' : ''}`}
                                 />
-                                <div className="text-red-600 font-semibold">{errors.password?.message}</div>
+                                {showErr && <div className="text-red-600 font-semibold">{passwordError}</div>}
                             </div>
+                            {showErr ? <div className="text-red-600 font-semibold">{err}</div> : ''}
                             {loading ? <div className="text-center pb-1">
                                 <div role="status">
                                     <svg className="inline mr-1 w-6 h-6 text-gray-200 animate-spin dark:text-gray-600  fill-purple-900" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">

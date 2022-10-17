@@ -19,7 +19,7 @@ const Schedule = () => {
                 setSchedule(response.data.message);
                 setLoading(false);
             } catch (err) {
-                console.log(err.response.data.message);
+                // console.log(err.response.data.message);
                 setError(err.response.data.message);
                 setShowErr(true);
                 setLoading(false);
@@ -48,20 +48,20 @@ const Schedule = () => {
                         {schedule.map((schedule) => {
                             const { date, slotEnd, slotStart, topic } = schedule;
                             return (
-                                <div className="flex w-8/12 mt-7 m-auto justify-between border shadow-sm rounded-md shadow-purple-500">
-                                    <div className="place-content-between flex w-full">
-                                        <div className="flex flex-col ">
-                                            <div className="font-bold text-left p-2 pb-0 text-xl text-purple-900">Topics</div>
-                                            <div className="p-2 pt-1 font-semibold text-2xl capitalize text-purple-700">{topic}</div>
-                                        </div>
-                                        <div className="my-auto">
-                                            <div className=" font-semibold text-lg text-purple-700">Date: {date}</div>
-                                            <div className=" font-semibold text-lg text-purple-700">Time: {slotStart} - {slotEnd}</div>
-                                        </div>
-                                        <div className="my-auto mx-2">
-                                            <button className="border p-1 pl-2 pr-2 text-lg rounded-lg bg-purple-900 text-white hover:bg-purple-700" >Scheduled</button>
-                                        </div>
+                                <div className="grid grid-cols-3 p-2 w-8/12 mt-10 m-auto justify-between border shadow-sm rounded-md shadow-purple-500">
+                                    {/* <div className="place-content-between flex w-full"> */}
+                                    <div className="flex flex-col my-auto">
+                                        <div className="font-bold text-left pl-2 pb-0 text-lg text-purple-900">Topics</div>
+                                        <div className="text-start pl-2 font-semibold text-xl text-purple-700">{topic}</div>
                                     </div>
+                                    <div className="my-auto">
+                                        <div className=" font-semibold text-lg text-purple-700">Date: {date}</div>
+                                        <div className=" font-semibold text-lg text-purple-700">Time: {slotStart} - {slotEnd}</div>
+                                    </div>
+                                    <div className="my-auto text-end mr-2">
+                                        <button className="border p-1 pl-2 pr-2 text-lg rounded-lg bg-purple-900 text-white hover:bg-purple-700" >Scheduled</button>
+                                    </div>
+                                    {/* </div> */}
                                 </div>
                             )
                         })}

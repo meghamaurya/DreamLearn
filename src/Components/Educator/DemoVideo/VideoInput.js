@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import Form2 from "./Form2";
-
+import VideoCourseTitle from './VideoCourseTitle';
 
 export default function VideoInput(props) {
-  const [showForm2, setShowForm2] = useState(false)
 
   const { width, height } = props;
 
@@ -18,7 +16,7 @@ export default function VideoInput(props) {
 
     const file = event.target.files[0];
     setUploadVideo(file)
-    console.log(file, "file")
+    // console.log(file, "file")
     const url = URL.createObjectURL(file);
     setSource(url);
   };
@@ -37,22 +35,23 @@ export default function VideoInput(props) {
     setErrors(errorObj);
     if (!error) {
       console.log("video uploaded")
-      setShowForm2(true);
+
     }
   }
   return (
-    <div className=" mt-16 m-auto pb-20 flex flex-col ">
+    <div className=" mt-16 m-auto pb-20 flex flex-col w-80">
 
-      {source && (
+      {source ? (
         <video
-          className="w-full h-48 rounded-lg"
+          className="w-full h-fit rounded-lg"
           width={width}
           height={height}
           controls
           src={source}
         />
-      )}
-      <div className="w-full p-6 text-lg text-purple-900 border-2 rounded-md overflow-auto">{source || "No Video Selected"}</div>
+      ) :
+        <div className="w-full p-6 text-lg text-purple-900 border-2 rounded-md overflow-auto">{source || "No Video Selected"}</div>
+      }
       <input
         ref={inputRef}
         className=" w-48 invisible"
@@ -60,13 +59,11 @@ export default function VideoInput(props) {
         onChange={handleFileChange}
         accept=".mp4,.mpeg"
       />
-      {errors.uploadVideo && <div className="text-red-600 font-semibold mb-3">{errors.uploadVideo}</div>}
-      {!source && <button className="border p-1 mt-6 text-lg rounded-lg bg-purple-900 text-white w-32 m-auto" onClick={handleChoose}>Choose Video</button>}
-      <button
-        className="border p-1 mt-3 text-lg rounded-lg bg-purple-900 text-white w-32 m-auto focus:outline-none focus:shadow-outline"
-        onClick={uploadDemoVideo} >Upload Video</button>
 
-      {showForm2 && <Form2 video={uploadVideo} />}
+      {errors.uploadVideo && <div className="text-red-600 font-semibold mb-3">{errors.uploadVideo}</div>}
+      <button className="border p-1 mt-6 text-lg rounded-lg bg-purple-900 text-white w-32 m-auto hover:bg-purple-700" onClick={handleChoose}>Choose Video</button>
+
+      <VideoCourseTitle video={uploadVideo} />
     </div>
   );
 }

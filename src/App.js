@@ -4,14 +4,13 @@ import { useEffect, useState } from 'react';
 import Nav from './Components/NavFooter/Nav';
 import Footer from './Components/NavFooter/Footer';
 import LearnerHome from './Components/HomePage/Learner';
-import EducatorHome from './Components/HomePage/Educator';
+import EducatorHome from './Components/HomePage/EducatorHome/MyCourse';
 import LandingPage from './Components/LandingPage';
 import Comp from './Components/NavFooter/Comp'
 import SignIn from './Components/SignIN/SignIn';
 // import SignUp from './Components/SignIN/SignUp';
 import AuthService from './Components/Auth/auth.service';
 import LearnerDropdown from './Components/SecondNavbar/LearnerDD'
-import EducatorDropdown from './Components/SecondNavbar/EducatorDD';
 import InstrumentCourses from './Components/InstrumentCourses';
 import Register from './Components/Register';
 import Courses from './Components/Courses'
@@ -21,12 +20,15 @@ import Contact from './Components/AboutContact/Contact';
 import Profile from './Components/Profile';
 // import PrivateRoutes from './Components/ProtectedRoutes';
 // import AllSchedule from './Components/AllSchedule';
+import EducatorDropdown from './Components/SecondNavbar/EducatorDD';
 import AddDemoVideo from './Components/Educator/DemoVideo/AddVideo';
 import AddCourse from './Components/Educator/AddCourse/AddCourse';
 import AddSchedule from './Components/Educator/AddSchedule/AddCourseSchedule';
-import MyCourses from './Components/Educator/MyCourses/MyCourse';
+import MyCourses from './Components/Educator/MyCourses/Educator';
+import EducatorSchedule from './Components/Educator/EducatorSchedule/EducatorSchedule';
 import Modal from './Components/Modal';
-import PageNotFound from './Components/NotFound';
+import PageNotFound from './Components/PageNotFound';
+// import EducatorRoutes from './EducatorRoutes';
 function App() {
   const [learner, setLearner] = useState(false);
   const [educator, setEducator] = useState(false);
@@ -34,7 +36,7 @@ function App() {
 
   useEffect(() => {
     const user = AuthService.getCurrentUser();
-    // console.log(user, 'currentuser')
+    // console.log(user, 'currentuser');
     if (user) {
       setCurrentUser(user);
       setLearner(user.role.includes("ROLE_LEARNER"));
@@ -56,7 +58,6 @@ function App() {
           {/* <Route path='/signup' element={<SignUp />} /> */}
           <Route path='/signin' element={<SignIn learner={learner} educator={educator} />} />
           <Route path='/learner' element={<LearnerHome />} />
-          <Route path='/educator' element={<EducatorHome />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/instruments/:instrument' element={<InstrumentCourses />} />
           <Route path='/instruments/:instrument/:courseTitle' element={<Register />} />
@@ -65,10 +66,13 @@ function App() {
           <Route path='/courses/:courseTitle' element={<Schedule />} />
           {/* <Route path='/allschedule' element={<AllSchedule />} /> */}
           {/* educator routes */}
+          <Route path='/educator' element={<EducatorHome />} />
           <Route path='/adddemovideo' element={<AddDemoVideo />} />
           <Route path='/addcourse' element={<AddCourse />} />
           <Route path='/addschedule' element={<AddSchedule />} />
+          <Route path='/educatorschedule/:title' element={<EducatorSchedule />} />
           <Route path='/mycourses' element={<MyCourses />} />
+          {/* <EducatorRoutes /> */}
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
           <Route path="*" element={<PageNotFound />} />

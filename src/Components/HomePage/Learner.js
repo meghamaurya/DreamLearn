@@ -18,7 +18,7 @@ const LearnerHome = () => {
                 setLearnerContent(response.data.message);
                 setLoading(false);
             } catch (err) {
-                console.log(err);
+                // console.log(err);
                 setError(err.response.data.message);
                 setShowErr(true);
                 if (err.response.data.message === "Unauthorized!") {
@@ -51,7 +51,7 @@ const LearnerHome = () => {
                         return (
                             <div className='content-start inline-block m-9 mt-16'>
                                 <div key={id} className="inline-block w-80 h-64 overflow-hidden object-cover rounded-lg shadow-lg shadow-purple-400 mb-5" >
-                                    <video className='w-full h-48 z-0' controls >
+                                    <video className='w-full h-48 rounded-t-md z-0' controls >
                                         <source src={videoUrl} />
                                     </video>
                                     <div className='flex place-content-between capitalize text-purple-900 text-md items-center  m-2'>

@@ -20,7 +20,7 @@ export default function InstrumentCourses() {
                 setShowErr(false);
                 setLoading(false);
             } catch (err) {
-                console.log(err.response.data.message);
+                // console.log(err.response.data.message);
                 setError(err.response.data.message);
                 setShowErr(true);
                 setLoading(false);

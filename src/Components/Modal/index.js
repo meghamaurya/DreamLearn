@@ -17,7 +17,7 @@ const Modal = () => {
                 setPopup(response.data.message);
                 setShowPopup(true);
             } catch (err) {
-                console.log(err.response.data.message);
+                // console.log(err.response.data.message);
                 setPopup(err.response.data.message);
                 setShowPopup(true);
                 if (err.response.data.message === "Unauthorized!") {

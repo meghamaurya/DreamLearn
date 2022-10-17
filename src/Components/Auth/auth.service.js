@@ -9,10 +9,11 @@ const signup = async (name, username, email, password, role) => {
         email,
         password,
         role
-    }).then((response) => {
-        console.log("user successfully signed in");
-        //localStorage.setItem("user", JSON.stringify(response.data));
     })
+    // .then((response) => {
+    //     console.log("user successfully signed in");
+    //     //localStorage.setItem("user", JSON.stringify(response.data));
+    // })
 };
 
 const signin = async (username, password) => {

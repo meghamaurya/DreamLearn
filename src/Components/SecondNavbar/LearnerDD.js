@@ -16,17 +16,17 @@ const LearnerDropdown = () => {
 
     return (<>
 
-        <div className='z-20 pl-24 mt-7 text-xl pb-1  text-purple-900 shadow-md shadow-purple-300'>
+        <div className=' pl-24 mt-7 text-xl pb-1  text-purple-900 shadow-md shadow-purple-300'>
             <ul className="flex ">
                 <li className="relative pr-3">
                     <button onMouseEnter={showInstrumentList} onMouseLeave={hideInstrumentList} className="font-medium hover:text-purple-700">Instruments</button>
 
                     {instrumentList ?
-                        <div className="absolute pr-6 pl-6  shadow-md shadow-purple-500 rounded-md bg-white p-4" onMouseEnter={showInstrumentList} onMouseLeave={hideInstrumentList} >
+                        <div className="absolute z-10  pr-6 pl-6  shadow-md shadow-purple-500 rounded-md bg-white p-4" onMouseEnter={showInstrumentList} onMouseLeave={hideInstrumentList} >
                             {instrumentTitle?.map((instrument, index) => {
                                 return (
                                     <div key={index} >
-                                        <div className="hover:font-semibold hover:text-purple-700 p-0.5 capitalize"><Link to={`/instruments/${instrument}`}>{instrument}</Link></div>
+                                        <div className="hover:font-semibold hover:text-purple-700 p-0.5 text-start capitalize"><Link to={`/instruments/${instrument}`}>{instrument}</Link></div>
                                     </div>
                                 )
                             })}

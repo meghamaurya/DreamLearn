@@ -1,17 +1,47 @@
 import React, { useState, useEffect } from 'react'
 import Schedule from './Schedule'
+import EducatorService from '../../Auth/educator.service';
+import AuthService from '../../Auth/auth.service';
+import { useNavigate } from 'react-router-dom';
+
 
 const CourseTitle = () => {
-  const [showSchedule, setShowSchedule] = useState(false)
+  // const [showSchedule, setShowSchedule] = useState(false)
   const [courseTitle, setCourseTitle] = useState("")
-
+  const [courseList, setCourseList] = useState([{}]);
+  const [option, setOption] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [err, setErr] = useState([]);
+  const [showErr, setShowErr] = useState(false);
+  const navigate = useNavigate();
+  useEffect(() => {
+    setLoading(true);
+    EducatorService.MyCourse().then(
+      (response) => {
+        // console.log('eduactor Course List', response.data.message);
+        if (response.data.message !== "No courses added yet!") {
+          setCourseList(response.data.message);
+        }
+        setLoading(false);
+        setOption(true);
+      },
+      (err) => {
+        // console.log(err);
+        setErr(err.response.data.message);
+        setShowErr(true);
+        if (err.response.data.message === "Unauthorized!") {
+          AuthService.logout();
+          navigate('/signin');
+          window.location.reload();
+        }
+      });
+  }, []);
   const handleChange = (event) => {
     const value = event.target.value;
     setCourseTitle(value)
+    // console.log(value)
   };
-  const sendTitle = () => {
-    setShowSchedule(true);
-  }
+
   useEffect(() => {
     localStorage.setItem('courseTitle', JSON.stringify(courseTitle));
   }, [courseTitle])
@@ -19,17 +49,26 @@ const CourseTitle = () => {
   return (
 
     <div className=" mt-10 text-start">
-      <div className='mt-2 w-fit ' >
+      <div className='mt-2 w-4/12 pr-3' >
         <label className=" text-purple-900 text-sm font-bold mb-2" >Course Title:</label>
-        <input
-          className="shadow appearance-none border rounded py-2 px-3 mb-2 text-purple-900 leading-tight focus:outline-none focus:shadow-outline"
-          type="text" placeholder='Enter Your Course Title' value={courseTitle} id="courseTitle"
-          onChange={handleChange}
-        />
+        {option ? (<select onChange={(e) => handleChange(e)}
+          className="shadow cursor-pointer appearance-none border rounded w-full mt-1 py-2 px-3 mb-2 text-purple-900 leading-tight focus:outline-none focus:shadow-outline">
+          <option value={courseTitle} >Please Select</option>
+          {(courseList?.map((data) => {
+            const { id, title } = data;
+            return (
+              <option key={id}  >
+                <option value={id} > {title}</option>
+
+              </option>
+            )
+          }))
+          }
+
+        </select>) : <option className='default shadow appearance-none border rounded w-full mt-1 py-2 px-3 mb-2 text-purple-900 leading-tight focus:outline-none focus:shadow-outline'>{loading} Please Wait!!</option>}
       </div>
-      <button className="border ml-20 p-1 mt-4 text-lg rounded-lg bg-purple-900 text-white w-32 focus:outline-none focus:shadow-outline"
-        onClick={sendTitle} >Add Schedule</button>
-      {showSchedule && <Schedule courseTitle={courseTitle} />}
+      {showErr && <div className="text-red-600 font-semibold">{err}</div>}
+      <Schedule courseTitle={courseTitle} />
     </div>
   )
 }

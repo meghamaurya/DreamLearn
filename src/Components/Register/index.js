@@ -17,11 +17,11 @@ const Register = () => {
             try {
                 setLoading(true);
                 const response = await LearnerService.courseTitle(courseTitle);
-                console.log("registerCourse", response.data.message)
+                // console.log("registerCourse", response.data.message)
                 setCourseDetail(response.data.message);
                 setLoading(false);
             } catch (err) {
-                console.log(err);
+                // console.log(err);
                 setLoading(false);
                 setShowErr(true);
                 setError(err.response.data.message);
