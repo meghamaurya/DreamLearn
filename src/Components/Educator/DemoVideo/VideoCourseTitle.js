@@ -86,10 +86,10 @@ const CourseTitle = (props) => {
           className="shadow appearance-none border rounded w-full mt-1 py-2 px-3 mb-2 text-purple-900 leading-tight focus:outline-none focus:shadow-outline cursor-pointer">
           <option value={courseTitle} >Please Select</option>
           {(courseList.map((data) => {
-            const { id, title } = data;
+            const { title } = data;
             return (
-              <option key={id}  >
-                <option value={id} > {title}</option>
+              <option key={title}  > {title}
+                {/* <option value={id} > {title}</option> */}
 
               </option>
             )

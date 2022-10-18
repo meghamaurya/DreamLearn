@@ -30,9 +30,33 @@ function SignUp() {
     role: Yup.string().required('**Please select your role')
   });
 
-  const onSubmit = async (data) => {
-    // console.log(JSON.stringify(data, null, 2))
-    // console.log({ role })
+  const handleEnterPress = async (e) => {
+    // console.log("Enter event", e.key)
+    if (e.key === "Enter") {
+      try {
+        setLoading(true);
+        await AuthService.signup(name, username, email, password, role).then((response) => {
+          // console.log('succuessfully sign up', response);
+          setLoading(false);
+          navigate('/signin');
+          window.location.reload();
+        },
+          (err) => {
+            // console.log(err);
+            setShowErr(true);
+            setErr(err.response.data.message);
+            setLoading(false);
+          }
+        );
+      } catch (err) {
+        // console.log(err);
+        setShowErr(true);
+        setErr(err);
+      }
+    }
+  }
+
+  const handleBtnPress = async () => {
     try {
       setLoading(true);
       await AuthService.signup(name, username, email, password, role).then((response) => {
@@ -53,6 +77,11 @@ function SignUp() {
       setShowErr(true);
       setErr(err);
     }
+  }
+  const onSubmit = async (data, e) => {
+    e.preventDefault();
+    handleEnterPress(e);
+
   };
 
   const {
@@ -70,7 +99,7 @@ function SignUp() {
 
       <div className="w-full max-w-80% m-auto flex justify-start items-start ">
         <div className="w-full">
-          <form className="bg-white shadow-md rounded px-6 pt-6 pb-1 mb-3" onSubmit={handleSubmit(onSubmit)}>
+          <form className="bg-white shadow-md rounded px-6 pt-6 pb-1 mb-3" onSubmit={handleSubmit(onSubmit)} onKeyDown={handleEnterPress} >
             <div className='mb-4'>
               <input
                 placeholder='name'
@@ -161,7 +190,7 @@ function SignUp() {
               </div>
             </div> : null}
             <div className='form-group'>
-              <button type='submit' className='btn bg-purple-900 text-white p-1 rounded-md shadow-md hover:bg-purple-500 hover:text-white hover:font-semibold shadow-purple-300 hover:shadow-purple-900 hover:shadow-md '>Sign Up</button>
+              <button type='submit' className='btn bg-purple-900 text-white p-1 rounded-md shadow-md hover:bg-purple-500 hover:text-white hover:font-semibold shadow-purple-300 hover:shadow-purple-900 hover:shadow-md ' onClick={handleBtnPress}>Sign Up</button>
             </div>
             <Link className="inline-block align-baseline text-sm text-purple-500 hover:text-purple-900" to="/SignIn" >
               Have an account?{" "}Sign In

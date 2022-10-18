@@ -47,10 +47,10 @@ const LearnerHome = () => {
                 {showErr ? <div className="text-4xl font-semibold mt-20 m-28 text-purple-900">{error}</div> :
 
                     (learnerContent.map((data) => {
-                        const { id, educator, instrument, videoUrl } = data;
+                        const { educator, instrument, videoUrl } = data;
                         return (
-                            <div className='content-start inline-block m-9 mt-16'>
-                                <div key={id} className="inline-block w-80 h-64 overflow-hidden object-cover rounded-lg shadow-lg shadow-purple-400 mb-5" >
+                            <div key={videoUrl} className='content-start inline-block m-9 mt-16'>
+                                <div className="inline-block w-80 h-64 overflow-hidden object-cover rounded-lg shadow-lg shadow-purple-400 mb-5" >
                                     <video className='w-full h-48 rounded-t-md z-0' controls >
                                         <source src={videoUrl} />
                                     </video>

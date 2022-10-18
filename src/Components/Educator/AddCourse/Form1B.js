@@ -50,7 +50,7 @@ const Form1B = (props) => {
             errorObj.instrument = "** Required";
             error = true;
         }
-        if (data.duration === '') {
+        if (data.duration === '' && data.duration > 1) {
             errorObj.duration = "** Required";
             error = true;
         }
@@ -137,7 +137,7 @@ const Form1B = (props) => {
                         <label className=" text-purple-900 text-md font-bold mb-6"> Select Instrument</label>
                         <select onChange={(e) => handleChange(e)} name="instrument" id="instrument"
                             className="shadow appearance-none border rounded w-full mt-1 py-2 px-3 mb-2 text-purple-900 leading-tight focus:outline-none focus:shadow-outline">
-                            <option  >Please  Select</option>
+                            <option >Please  Select</option>
                             <option value="tabla"  >Tabla</option>
                             <option value="dholak" >Dholak</option>
                             <option value="flute" >Flute</option>
@@ -156,7 +156,7 @@ const Form1B = (props) => {
                         <input
                             value={data.duration}
                             onChange={(e) => handleChange(e)}
-                            type="number" name="Duration" id="duration" placeholder=' Course Duration'
+                            type="number" name="Duration" min="10" id="duration" placeholder=' Course Duration (numbers of day)'
                             className="shadow appearance-none border rounded w-full mt-1 py-2 px-3  text-purple-900 leading-tight focus:outline-none focus:shadow-outline" />
                     </div>
                     {errors.duration && <div className="text-red-600 font-semibold mb-6">{errors.duration}</div>}

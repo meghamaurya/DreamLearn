@@ -43,10 +43,10 @@ const Courses = () => {
             </div> : <>
                 {showErr ? <div className="text-4xl font-semibold mt-20 m-28 text-purple-900">{error}</div> :
                     <>
-                        {courses.map((course) => {
+                        {courses.map((course, index) => {
                             const { courseTitle } = course;
                             return (
-                                <div className="flex w-8/12 mt-10 m-auto p-2 border shadow-sm rounded-md shadow-purple-500 ">
+                                <div key={index} className="flex w-8/12 mt-10 m-auto p-2 border shadow-sm rounded-md shadow-purple-500 ">
                                     <div className="place-content-between w-full m-auto flex">
                                         <div className="pr-6 ">
                                             <div className="font-bold text-left p-3 text-2xl text-purple-900 capitalize">{courseTitle}</div>

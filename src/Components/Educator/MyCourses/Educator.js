@@ -4,7 +4,7 @@ import AuthService from '../../Auth/auth.service';
 import EducatorService from '../../Auth/educator.service';
 
 
-const MyCourses = () => {
+const MyDemoVideo = () => {
     const [EducatorContent, setEducatorContent] = useState([]);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
@@ -42,9 +42,9 @@ const MyCourses = () => {
                     </div>
                 </div>) :
                 (EducatorContent.map((data) => {
-                    const { id, courseTitle, instrument, videoUrl } = data;
+                    const { courseTitle, instrument, videoUrl } = data;
                     return (
-                        <div key={id} className='content-start inline-block m-4 mt-16'>
+                        <div key={videoUrl} className='content-start inline-block m-4 mt-16'>
                             <div className="inline-block w-80 h-56 overflow-hidden object-cover rounded-lg shadow-lg shadow-purple-500 mb-10" >
                                 <video className='w-full h-48' controls >
                                     <source src={videoUrl} />
@@ -61,4 +61,4 @@ const MyCourses = () => {
     )
 };
 
-export default MyCourses;
+export default MyDemoVideo;

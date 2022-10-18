@@ -23,7 +23,7 @@ function SignIn() {
     });
 
     const handleEnterPress = async (e) => {
-        console.log("Enter event", e.key)
+        // console.log("Enter event", e.key)
         if (e.key === "Enter") {
             try {
                 await AuthService.signin(username, password).then(
@@ -62,7 +62,7 @@ function SignIn() {
             }
         }
     }
-    const handleBtnPress = async () => {
+    const handleBtnClick = async () => {
         try {
             await AuthService.signin(username, password).then(
                 () => {
@@ -209,7 +209,7 @@ function SignIn() {
                             </div> : ''}
 
                             <div className='form-group'>
-                                <button type='submit' className='btn bg-purple-900 text-white p-1 rounded-md shadow-md hover:bg-purple-500 hover:text-white hover:font-semibold shadow-purple-300 hover:shadow-purple-900 hover:shadow-md' onClick={handleBtnPress}>Sign In</button>
+                                <button type='submit' className='btn bg-purple-900 text-white p-1 rounded-md shadow-md hover:bg-purple-500 hover:text-white hover:font-semibold shadow-purple-300 hover:shadow-purple-900 hover:shadow-md' onClick={handleBtnClick}>Sign In</button>
                             </div>
                             <Link className="inline-block align-baseline text-sm text-purple-500 hover:text-purple-900" to="/">
                                 Don't have an account?{" "}Sign Up

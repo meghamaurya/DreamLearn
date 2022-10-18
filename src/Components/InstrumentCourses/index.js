@@ -50,8 +50,8 @@ export default function InstrumentCourses() {
                         {instruments?.map((data) => {
                             const { courseTitle, imageUrl, educator, instrument, startDate, endDate } = data
                             return (
-                                <Link to={`/instruments/${instrument}/${courseTitle}`} >
-                                    <div key={courseTitle} className='grid grid-cols-2  border p-4 mt-14  rounded-md shadow-md shadow-purple-400 cursor-pointer capitalize '>
+                                <Link key={imageUrl} to={`/instruments/${instrument}/${courseTitle}`} >
+                                    <div className='grid grid-cols-2  border p-4 mt-14  rounded-md shadow-md shadow-purple-400 cursor-pointer capitalize '>
                                         <div className=" m-auto">
                                             <img className="w-full h-56 rounded-md " src={imageUrl} alt={courseTitle} />
                                         </div>

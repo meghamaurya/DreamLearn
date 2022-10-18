@@ -48,10 +48,10 @@ const EducatorSchedule = () => {
             </div> : <>
                 {showErr ? <div className="text-4xl font-semibold mt-20 m-28 text-purple-900">{error}</div> :
                     <>
-                        {schedule.map((item) => {
+                        {schedule.map((item, index) => {
 
                             return (
-                                <div className="grid grid-cols-3 w-8/12 mt-10 p-2 m-auto justify-between border shadow-sm rounded-md shadow-purple-500">
+                                <div key={index} className="grid grid-cols-3 w-8/12 mt-10 p-2 m-auto justify-between border shadow-sm rounded-md shadow-purple-500">
                                     <div className="flex flex-col my-auto">
                                         <div className="font-bold text-left pl-2 pb-0 text-lg text-purple-900">Topics</div>
                                         <div className="text-start pl-2  font-semibold text-xl text-purple-700">{item.topic}</div>

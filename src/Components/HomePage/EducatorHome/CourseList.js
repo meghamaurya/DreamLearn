@@ -26,7 +26,7 @@ const CourseList = () => {
                 // console.log(err);
                 setShowErr(true);
                 setErr(err.response.data.message);
-                loading(false);
+                // loading(false);
                 if (err.response.data.message === "Unauthorized!") {
                     AuthService.logout();
                     navigate("/signin")
