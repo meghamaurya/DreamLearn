@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -21,11 +22,47 @@ function SignIn() {
         password: Yup.string().required('**Password is required')
     });
 
+    const handleEnterPress = async (e) => {
+        console.log("Enter event", e.key)
+        if (e.key === "Enter") {
+            try {
+                await AuthService.signin(username, password).then(
+                    () => {
+                        setLoading(true);
+                        const data = JSON.parse(localStorage.getItem('user'))
+                        // console.log(data.role, 'signin res')
+                        if (data.role === "ROLE_LEARNER") {
+                            // console.log('learner home', data)
+                            navigate('/learner')   //learner home
+                        }
+                        if (data.role === "ROLE_EDUCATOR") {
+                            // console.log('educator home')
+                            navigate('/educator')
+                        }
+                        window.location.reload();
+                    },
+                    (err) => {
+                        // console.log(err);
 
-    const onSubmit = async (data, e) => {
-        // console.log(JSON.stringify(data, null, 2))
-        e.preventDefault();
-
+                        if (err.response.data.message === "User Not found.") {
+                            setUsernameError(err.response.data.message);
+                            setShowErr(true);
+                            setLoading(false);
+                        }
+                        if (err.response.data.message === "Invalid Password!") {
+                            setPasswordError(err.response.data.message);
+                            setShowErr(true);
+                            setLoading(false);
+                        }
+                    }
+                );
+            } catch (err) {
+                console.log(err);
+                setErr(err.config.message);
+            }
+        }
+    }
+    const handleBtnPress = async () => {
         try {
             await AuthService.signin(username, password).then(
                 () => {
@@ -34,7 +71,7 @@ function SignIn() {
                     // console.log(data.role, 'signin res')
                     if (data.role === "ROLE_LEARNER") {
                         // console.log('learner home', data)
-                        navigate('/learner')   //learner home 
+                        navigate('/learner')   //learner home
                     }
                     if (data.role === "ROLE_EDUCATOR") {
                         // console.log('educator home')
@@ -61,6 +98,12 @@ function SignIn() {
             console.log(err);
             setErr(err.config.message);
         }
+    }
+
+    const onSubmit = async (data, e) => {
+        // console.log(JSON.stringify(data, null, 2))
+        e.preventDefault();
+        handleEnterPress(e);
     };
 
     const {
@@ -79,7 +122,7 @@ function SignIn() {
 
                 <div className="w-full mt-4 max-w-80% flex justify-start items-center pt-2">
                     <div className="w-full">
-                        <form className="bg-white shadow-md rounded px-6 pt-6 pb-1 mb-3" onSubmit={handleSubmit(onSubmit)}>
+                        <form className="bg-white shadow-md rounded px-6 pt-6 pb-1 mb-3" onSubmit={handleSubmit(onSubmit)} onKeyDown={handleEnterPress}>
                             {/* <div className="flex flex-col items-center justify-center lg:justify-start">
                             <p className=" text-md mb-1 text-center text-purple-900 font-semibold">Sign in with</p>
                             <div className="flex">
@@ -166,7 +209,7 @@ function SignIn() {
                             </div> : ''}
 
                             <div className='form-group'>
-                                <button type='submit' className='btn bg-purple-900 text-white p-1 rounded-md shadow-md hover:bg-purple-500 hover:text-white hover:font-semibold shadow-purple-300 hover:shadow-purple-900 hover:shadow-md' onClick={() => setLoading(true)}>Sign In</button>
+                                <button type='submit' className='btn bg-purple-900 text-white p-1 rounded-md shadow-md hover:bg-purple-500 hover:text-white hover:font-semibold shadow-purple-300 hover:shadow-purple-900 hover:shadow-md' onClick={handleBtnPress}>Sign In</button>
                             </div>
                             <Link className="inline-block align-baseline text-sm text-purple-500 hover:text-purple-900" to="/">
                                 Don't have an account?{" "}Sign Up
