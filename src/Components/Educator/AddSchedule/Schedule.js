@@ -154,7 +154,7 @@ export const Schedule = (props) => {
                 </tbody>
               </table>
             </div>
-            <button className="border p-1 text-lg rounded-lg bg-red-700 text-white w-32 ml-56 mt-5 focus:outline-none focus:shadow-outline "
+            <button className="border p-1 text-lg rounded-lg bg-red-700 ml-72 text-white w-32 mt-7 focus:outline-none focus:shadow-outline "
               onClick={() => setSchedules([])}>Remove All</button>
           </>}
           {schedules.length < 1 && <div className="w-84 ml-14 text-center m-auto p-6 text-lg text-purple-900 border-2 rounded-md  overflow-auto">No schedules are added yet</div>}

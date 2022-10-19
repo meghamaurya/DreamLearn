@@ -1,5 +1,5 @@
 
-import { Outlet, useNavigate } from "react-router-dom";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
 
 // const PrivateRoutes = (props) => {
 //     const { learner, children } = props;
@@ -8,24 +8,26 @@ import { Outlet, useNavigate } from "react-router-dom";
 
 // }
 
-const PrivateLearnerRoutes = () => {
-    // const { currentUser } = props;
-    // console.log(user);
-    const currentUser = JSON.parse(localStorage.getItem('user'));
-    const navigate = useNavigate();
-    if (!currentUser) {
-        return navigate("/signin");
+const PrivateLearnerRoutes = (currentUser, getUser) => {
+
+    console.log('currentUser', currentUser);
+    console.log("learner", getUser);
+    // const user = JSON.parse(localStorage.getItem('user'));
+    // const navigate = useNavigate();
+    if (!getUser) {
+        // return navigate("/signin");
+        return <Navigate to='/signin' />
     }
-    return <Outlet />
+    // return learner ? <Outlet /> : <Navigate to='*' replace />
     // const user = JSON.parse(localStorage.getItem('user'))
     // // console.log(data.role, 'signin res')
-    // if (user.role === "ROLE_LEARNER") {
-    //     // console.log('learner home', data)
-    //     // navigate('/learner')   //learner home
-    //     return children
-    // } else {
-    //     navigate('/signin');
-    // }
+    if (getUser.role === "ROLE_LEARNER") {
+        // console.log('learner home', data)
+        // navigate('/learner')   //learner home
+        return <Outlet />
+    } else {
+        <Navigate to='/signin' />
+    }
     // return user ? children : navigate('/signin')
 }
 

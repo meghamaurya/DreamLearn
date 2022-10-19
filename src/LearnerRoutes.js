@@ -1,14 +1,9 @@
-function LearnerRoutes() {
-    return (
-        <>
-            <Route path='/courses' element={<Courses />} />
-            <Route path='/courses/:schedule' element={<Schedule />} />
-            <Route path='/allschedule' element={<AllSchedule />} />
-            <Route path='/adddemovideo' element={<AddDemoVideo />} />
-            <Route path='/addcourse' element={<AddCourse />} />
-            <Route path='/addschedule' element={<AddSchedule />} />
-            <Route path='/mycourses' element={<MyCourses />} />
-            <Route path='/about' element={<About />} />
-            <Route path='/contact' element={<Contact />} /></>
-    )
+import SignIn from "./Components/SignIN/SignIn";
+import EducatorHome from "./Components/HomePage/EducatorHome/MyCourse";
+
+function LearnerRoutes({ Component }) {
+    const user = JSON.parse(localStorage.getItem('user'));
+    return user ? user.role === "ROLE_LEARNER" ? <Component /> : <EducatorHome /> : <SignIn />;
 }
+
+export default LearnerRoutes;

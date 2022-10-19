@@ -31,7 +31,8 @@ const signin = async (username, password) => {
 }
 
 const logout = () => {
-    localStorage.removeItem("user");
+    // localStorage.removeItem("user");
+    localStorage.clear();
 };
 
 const getCurrentUser = () => {
