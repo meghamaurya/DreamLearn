@@ -29,7 +29,7 @@ const Courses = () => {
             }
         }
         getData();
-    }, [])
+    }, [navigate])
     return (
         <div >
             <h3 className='text-center mt-10 text-3xl underline underline-offset-2 font-bold text-purple-900'>My Courses</h3>
