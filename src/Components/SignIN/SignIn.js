@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from 'yup';
@@ -21,6 +21,17 @@ function SignIn() {
         username: Yup.string().required('**Username is required'),
         password: Yup.string().required('**Password is required')
     });
+    const user = JSON.parse(localStorage.getItem('user'));
+    useEffect(() => {
+        if (user && user.role === "ROLE_LEARNER") {
+            navigate('/learner')
+
+        } if (user && user.role === "ROLE_EDUCATOR") {
+            navigate('/educator')
+        }
+
+
+    }, []);
 
     const handleEnterPress = async (e) => {
         // console.log("Enter event", e.key)
