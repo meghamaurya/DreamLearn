@@ -186,7 +186,7 @@ function SignIn() {
 
                             <div className=" mb-4">
                                 <input
-                                    placeholder='username'
+                                    placeholder='Username'
                                     name="username"
                                     type="text"
                                     {...register('username')}

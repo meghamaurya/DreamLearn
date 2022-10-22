@@ -102,7 +102,7 @@ function SignUp() {
           <form className="bg-white shadow-md rounded px-6 pt-6 pb-1 mb-3" onSubmit={handleSubmit(onSubmit)} onKeyDown={handleEnterPress} >
             <div className='mb-4'>
               <input
-                placeholder='name'
+                placeholder='Name'
                 name='name'
                 type="text"
                 {...register('name')}
