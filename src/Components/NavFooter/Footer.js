@@ -4,7 +4,7 @@ function Footer() {
   return (
 
     <div className=" text-center fixed left-0 bottom-0 inset-x-0 justify-end">
-      <footer className="shadow-xl md:flex md:items-center md:justify-between md:p-4 bg-purple-900 ">
+      <footer className="shadow-xl md:flex md:items-center md:justify-between md:p-3 bg-purple-900 ">
         <ul className="flex flex-wrap ml-10 mt-2 text-sm font-bold text-white sm:-mt-0.5 ">
           <li>
             <Link to="/about" className="mr-4 hover:underline md:mr-6 text-xl ">
@@ -29,7 +29,7 @@ function Footer() {
             className="text-white hover:text-emerald-400"
           >
             <svg
-              className="w-10 h-8"
+              className="w-8 h-7"
               fill="currentColor"
               viewBox="0 0 24 24"
               aria-hidden="true"
@@ -47,7 +47,7 @@ function Footer() {
             className="text-white  hover:text-emerald-400"
           >
             <svg
-              className="w-10 h-8"
+              className="w-8 h-7"
               fill="currentColor"
               viewBox="0 0 24 24"
               aria-hidden="true"
@@ -65,7 +65,7 @@ function Footer() {
             className="text-white hover:text-emerald-400"
           >
             <svg
-              className="w-10 h-8"
+              className="w-8 h-7"
               fill="currentColor"
               viewBox="0 0 24 24"
               aria-hidden="true"
