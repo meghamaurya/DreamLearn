@@ -126,8 +126,8 @@ function SignIn() {
     });
     return (
         <>
-            <div className=" max-w-[1250px] mx-auto z-10 pb-2 overflow-hidden mt-11 grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 m-3 pl-10 pr-5 h-fit shadow-lg shadow-purple-500 ">
-                <div className=" col-span-2 mt-4 mb-4 ">
+            <div className=" max-w-[1250px] mx-auto z-10 pb-2 overflow-hidden mt-3 grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 ml-10 mr-10 pl-8 pr-8 rounded h-fit shadow-lg shadow-purple-500 ">
+                <div className=" col-span-2 mt-5 mb-3 ">
                     <Carousel />
                 </div>
 
@@ -192,7 +192,7 @@ function SignIn() {
                                     {...register('username')}
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
-                                    className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.username ? 'is-invalid' : ''}`}
+                                    className={`shadow appearance-none border rounded w-full py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.username ? 'is-invalid' : ''}`}
                                 />
                                 {showErr ? <div className="text-red-600 font-semibold">{usernameError}</div> : ''}
                             </div>
@@ -205,7 +205,7 @@ function SignIn() {
                                     {...register('password')}
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
-                                    className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.password ? 'is-invalid' : ''}`}
+                                    className={`shadow appearance-none border rounded w-full py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.password ? 'is-invalid' : ''}`}
                                 />
                                 {showErr && <div className="text-red-600 font-semibold">{passwordError}</div>}
                             </div>
@@ -220,9 +220,9 @@ function SignIn() {
                             </div> : ''}
 
                             <div className='form-group'>
-                                <button type='submit' className='btn bg-purple-900 text-white p-1 rounded-md shadow-md hover:bg-purple-500 hover:text-white hover:font-semibold shadow-purple-300 hover:shadow-purple-900 hover:shadow-md' onClick={handleBtnClick}>Sign In</button>
+                                <button type='submit' className='btn text-sm bg-purple-900 text-white p-1 rounded-md shadow-md hover:bg-purple-500 hover:text-white hover:font-semibold shadow-purple-300 hover:shadow-purple-900 hover:shadow-md' onClick={handleBtnClick}>Sign In</button>
                             </div>
-                            <Link className="inline-block align-baseline text-sm text-purple-500 hover:text-purple-900" to="/">
+                            <Link className="inline-block align-baseline text-xs text-purple-500 hover:text-purple-900" to="/">
                                 Don't have an account?{" "}Sign Up
                             </Link>
                         </form>
