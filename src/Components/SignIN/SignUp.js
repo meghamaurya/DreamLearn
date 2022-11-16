@@ -92,8 +92,8 @@ function SignUp() {
     resolver: yupResolver(validationSchema)
   });
   return (
-    <div className=" max-w-[1250px] mx-auto z-10 text-sm overflow-hidden mt-3 grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 ml-10 mr-10 pl-8 pr-8 h-fit shadow-lg shadow-purple-500 rounded">
-      <div className="col-span-2 mt-5 mb-5 ">
+    <div className=" max-w-[1250px] mx-auto z-10 text-sm overflow-hidden mt-5 grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 p-2 h-fit shadow-lg shadow-purple-500 rounded">
+      <div className="col-span-2 mt-5 mb-5 ml-8 ">
         <Carousel />
       </div>
 
