@@ -59,7 +59,7 @@ const CourseList = () => {
                                 <div className="font-semibold  text-left p-2  text-xl text-purple-700 col-span-9  "
                                 >Course Title: <span className='text-purple-500 text-left pl-5'>{title}</span>
                                 </div>
-                                <div className='m-auto ml-20'>
+                                <div className='m-auto ml-10'>
                                     <Link to={`/educatorschedule/${title}`}
 
                                     >  <button className="border p-1 pl-2 pr-2 text-lg rounded-lg bg-purple-900 text-white hover:bg-purple-700">Schedule </button></Link>

@@ -46,12 +46,12 @@ function Nav(props) {
           </div>
 
           <div>
-            <ul className=" flex  sm:mt-0 items-center py-2  space-x-10 px-20 text-xl ">
+            <ul className=" flex  sm:mt-0 items-center py-1  space-x-10 px-20 text-xl ">
               {/* <Link to="/" className="font-bold cursor-pointer mt-5 hover:rounded-lg hover:shadow-purple-100 shadow-lg">LandingPage</Link> */}
               {/* <Link to="/home" className="font-bold cursor-pointer mt-5 hover:shadow-purple-100 hover:rounded-lg shadow-lg">Home</Link> */}
-              {learner && <Link to="/learner" className="font-bold cursor-pointer mt-5 hover:shadow-purple-100 hover:rounded-lg shadow-lg">Home</Link>}
-              {learner && <Link to="/profile" className="font-bold cursor-pointer mt-5 hover:shadow-purple-100 hover:rounded-lg shadow-lg">{currentUser.username}</Link>}
-              {learner && (<div className="font-bold cursor-pointer mt-5 hover:rounded-lg hover:shadow-purple-100 shadow-lg" onClick={logOut}>Logout</div>)}
+              {learner && <Link to="/learner" className="font-bold cursor-pointer mt-3 hover:shadow-purple-100 hover:rounded-lg shadow-lg">Home</Link>}
+              {learner && <Link to="/profile" className="font-bold cursor-pointer mt-3 hover:shadow-purple-100 hover:rounded-lg shadow-lg">{currentUser.username}</Link>}
+              {learner && (<div className="font-bold cursor-pointer mt-3 hover:rounded-lg hover:shadow-purple-100 shadow-lg" onClick={logOut}>Logout</div>)}
               {/* educator home */}
               {educator && <Link to="/educator" className="font-bold cursor-pointer mt-5 hover:shadow-purple-100 hover:rounded-lg shadow-lg">Home</Link>}
               {educator && <Link to="/profile" className="font-bold cursor-pointer mt-5 hover:shadow-purple-100 hover:rounded-lg shadow-lg">{currentUser.username}</Link>}
