@@ -3,7 +3,7 @@ import AboutProfile from "./AboutProfile";
 
 function About() {
   return (
-    <div className=" m-auto py-12 pb-2  select-none">
+    <div className=" w-11/12 m-auto py-12 pb-2  select-none">
       <h1 className="text-3xl px-20 py-3 opacity-4 shadow-md text-purple-900 inline-block">
         About Us
       </h1>
