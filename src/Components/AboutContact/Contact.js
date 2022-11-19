@@ -9,8 +9,8 @@ import { BsFillPersonCheckFill } from 'react-icons/bs'
 function Contact() {
   return (
     <>
-      <div className="w-8/12 m-auto py-8  ">
-        <h1 className="text-3xl px-20 opacity-4 shadow-md text-purple-900 inline-block">
+      <div className="w-8/12 m-auto py-5">
+        <h1 className="text-3xl px-20 my-3 opacity-4 shadow-md text-purple-900 inline-block">
           Contact Us
         </h1>
       </div>
@@ -46,27 +46,15 @@ function Contact() {
                           <BsFillPersonCheckFill className="w-8 h-8 text-purple-900 hover:text-purple-700" />
                           <p className="text-sm text-purple-900 font-semibold">Portfolio</p>
                         </div>
-
                       </a>
                     </div>
-
-
                   </div>
-
-
-
-
                 </div>
-
-
               </div>
             )
           })
         }
-
       </div>
-
-
     </>
   );
 }
