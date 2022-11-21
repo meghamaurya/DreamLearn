@@ -127,12 +127,12 @@ function SignIn() {
     });
     return (
         <>
-            <div className=" max-w-[1250px] m-auto z-10 pb-2 text-sm overflow-hidden mt-3 grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 ml-10 mr-10 pl-8 pr-8 rounded h-fit shadow-lg shadow-purple-500 ">
-                <div className=" col-span-2 mt-5 mb-3 ">
+            <div className=" max-w-[1350px] mx-auto z-10 text-sm overflow-hidden my-20 grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 p-2 h-fit shadow-lg shadow-purple-500 shado rounded ">
+                <div className=" col-span-2 mt-5 mb-5 ml-8 ">
                     <Carousel />
                 </div>
 
-                <div className="w-full mt-4 max-w-80% flex justify-start items-center pt-2">
+                <div className="w-full mt-4 max-w-80% py-3 flex justify-start items-center pt-2">
                     <div className="w-full">
                         <form className="bg-white shadow-md rounded px-6 pt-6 pb-1 mb-3" onSubmit={handleSubmit(onSubmit)} onKeyDown={handleEnterPress}>
                             {/* <div className="flex flex-col items-center justify-center lg:justify-start">
@@ -193,7 +193,7 @@ function SignIn() {
                                     {...register('username')}
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
-                                    className={`shadow appearance-none border rounded w-full py-1.5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.username ? 'is-invalid' : ''}`}
+                                    className={`shadow appearance-none border rounded w-full py-2 px-3 text-lg text-purple-500 leading-tight focus:outline-none focus:shadow-outline ${errors.username ? 'is-invalid' : ''}`}
                                 />
                                 {showErr ? <div className="text-red-600 font-semibold pt-1">{usernameError}</div> : ''}
                             </div>
@@ -206,7 +206,7 @@ function SignIn() {
                                     {...register('password')}
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
-                                    className={`shadow appearance-none border rounded w-full py-1.5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.password ? 'is-invalid' : ''}`}
+                                    className={`shadow appearance-none border rounded w-full py-2 px-3 text-lg text-purple-500 leading-tight focus:outline-none focus:shadow-outline ${errors.password ? 'is-invalid' : ''}`}
                                 />
                                 {showErr && <div className="text-red-600 font-semibold pt-1">{passwordError}</div>}
                             </div>
@@ -221,9 +221,9 @@ function SignIn() {
                             </div> : ''}
 
                             <div className='form-group'>
-                                <button type='submit' className='btn text-sm bg-purple-900 text-white p-1 mb-0.5 rounded-md shadow-md hover:bg-purple-500 hover:text-white hover:font-semibold shadow-purple-300 hover:shadow-purple-900 hover:shadow-md' onClick={handleBtnClick}>Sign In</button>
+                                <button type='submit' className='btn text-base bg-purple-900 text-white p-1 px-2 mb-0.5 rounded-md shadow-md hover:bg-purple-500 hover:text-white hover:font-semibold shadow-purple-300 hover:shadow-purple-900 hover:shadow-md' onClick={handleBtnClick}>Sign In</button>
                             </div>
-                            <Link className="inline-block align-baseline text-xs text-purple-500 hover:text-purple-900" to="/">
+                            <Link className="inline-block align-baseline text-sm text-purple-500 hover:text-purple-900 my-1" to="/">
                                 Don't have an account?{" "}Sign Up
                             </Link>
                         </form>

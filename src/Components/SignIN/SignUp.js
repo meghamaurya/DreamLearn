@@ -92,12 +92,12 @@ function SignUp() {
     resolver: yupResolver(validationSchema)
   });
   return (
-    <div className=" max-w-[1250px] mx-auto z-10 text-sm overflow-hidden mt-5 grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 p-2 h-fit shadow-lg shadow-purple-500 rounded">
+    <div className=" max-w-[1350px] mx-auto z-10 text-sm overflow-hidden my-20 grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 p-2 h-fit shadow-lg shadow-purple-500 shado rounded">
       <div className="col-span-2 mt-5 mb-5 ml-8 ">
         <Carousel />
       </div>
 
-      <div className="w-full max-w-80% m-auto flex justify-start items-start ">
+      <div className="w-full max-w-80% m-auto py-3 flex justify-start items-start ">
         <div className="w-full">
           <form className="bg-white shadow-md rounded px-6 pt-2 pb-1 mb-3" onSubmit={handleSubmit(onSubmit)} onKeyDown={handleEnterPress} >
             <div className='mb-4'>
@@ -108,7 +108,7 @@ function SignUp() {
                 {...register('name')}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className={`shadow appearance-none border rounded w-full py-1.5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.username ? 'text-red' : ''}`} />
+                className={`shadow appearance-none border rounded w-full py-2 px-3 text-lg text-purple-500 leading-tight focus:outline-none focus:shadow-outline ${errors.username ? 'text-red' : ''}`} />
               <div className='text-red-600 font-semibold'>{errors.name?.message}</div>
             </div>
 
@@ -120,7 +120,7 @@ function SignUp() {
                 {...register('username')}
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className={`shadow appearance-none border rounded w-full py-1.5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.username ? 'text-red' : ''}`} />
+                className={`shadow appearance-none border rounded w-full py-2 px-3 text-lg text-purple-500 leading-tight focus:outline-none focus:shadow-outline ${errors.username ? 'text-red' : ''}`} />
               <div className='text-red-600 font-semibold'>{errors.username?.message}</div>
             </div>
 
@@ -132,7 +132,7 @@ function SignUp() {
                 {...register('email')}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className={`shadow appearance-none border rounded w-full py-1.5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.email ? 'is-invalid' : ''}`}
+                className={`shadow appearance-none border rounded w-full py-2 px-3 text-lg text-purple-500 leading-tight focus:outline-none focus:shadow-outline ${errors.email ? 'is-invalid' : ''}`}
               />
               <div className="text-red-600 font-semibold">{errors.email?.message}</div>
             </div>
@@ -145,7 +145,7 @@ function SignUp() {
                 {...register('password')}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className={`shadow appearance-none border rounded w-full py-1.5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.password ? 'is-invalid' : ''}`}
+                className={`shadow appearance-none border rounded w-full py-2 px-3 text-lg text-purple-500 leading-tight focus:outline-none focus:shadow-outline ${errors.password ? 'is-invalid' : ''}`}
               />
               <div className="text-red-600 font-semibold">{errors.password?.message}</div>
             </div>
@@ -158,7 +158,7 @@ function SignUp() {
                 {...register('confirmPassword')}
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className={`shadow appearance-none border rounded w-full py-1.5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.confirmPassword ? 'is-invalid' : ''
+                className={`shadow appearance-none border rounded w-full py-2 px-3 text-lg text-purple-500 leading-tight focus:outline-none focus:shadow-outline ${errors.confirmPassword ? 'is-invalid' : ''
                   }`}
               />
               <div className="text-red-600 font-semibold">
@@ -173,7 +173,7 @@ function SignUp() {
                 {...register('role')}
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
-                className={`shadow border rounded w-full py-1.5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.role ? 'is-invalid' : ''}`}
+                className={`shadow border rounded w-full py-2 px-3 text-lg text-purple-500 leading-tight focus:outline-none focus:shadow-outline ${errors.role ? 'is-invalid' : ''}`}
               ><option >Select Role</option>
                 <option value={"learner"} className={"bg-white hover:bg-purple-900"} >Learner</option>
                 <option value={"educator"} >Educator</option>
@@ -190,9 +190,9 @@ function SignUp() {
               </div>
             </div> : null}
             <div className='form-group'>
-              <button type='submit' className='btn text-sm bg-purple-900 text-white p-1 mb-0.5 rounded-md shadow-md hover:bg-purple-500 hover:text-white hover:font-semibold shadow-purple-300 hover:shadow-purple-900 hover:shadow-md ' onClick={handleBtnPress}>Sign Up</button>
+              <button type='submit' className='btn text-base bg-purple-900 text-white p-1 px-2 mb-0.5 rounded-md shadow-md hover:bg-purple-500 hover:text-white hover:font-semibold shadow-purple-300 hover:shadow-purple-900 hover:shadow-md ' onClick={handleBtnPress}>Sign Up</button>
             </div>
-            <Link className="inline-block align-baseline text-xs text-purple-500 hover:text-purple-900" to="/SignIn" >
+            <Link className="inline-block align-baseline text-sm text-purple-500 hover:text-purple-900 my-1" to="/SignIn" >
               Have an account?{" "}Sign In
             </Link>
           </form>
