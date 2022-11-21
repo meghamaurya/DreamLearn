@@ -9,11 +9,11 @@ const Cards = (props) => {
                 {card.map((item) => {
                     return (
                         <div key={item.id} className="py-6  " >
-                            <div className='w-60 h-60  object-cover rounded-lg overflow-hidden select-none shadow-lg shadow-purple-500 '>
-                                <img className='w-full h-40' src={item.image} alt={item.title} />
+                            <div className='w-72 h-72  object-cover rounded-lg overflow-hidden select-none shadow-lg shadow-purple-500 '>
+                                <img className='w-full h-52 rounded-sm' src={item.image} alt={item.title} />
                                 <div className='px-1 py-1 '>
-                                    <div className='font-bold text-l text-gray-800 mb-2'>{item.title}</div>
-                                    <p className='text-gray-700 text-sm'>{item.description}</p>
+                                    <div className='font-bold text-l text-purple-900 mb-2'>{item.title}</div>
+                                    <p className=' text-sm text-purple-700'>{item.description}</p>
                                 </div>
                             </div>
                         </div>
