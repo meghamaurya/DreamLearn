@@ -1,7 +1,7 @@
 import axios from "axios";
 import authHeader from "./auth-header";
 
-const API_URL = "https://dreamlearn-capstone.herokuapp.com/";
+const API_URL = "https://dreamlearn-capstone.onrender.com/";
 
 const getAllData = () => {
     return axios.get(API_URL + "api/test/all");
@@ -19,13 +19,13 @@ const uploadCourse = (courseDetail) => {
 }
 
 const addSchedule = (userDetail) => {
-    return axios.post(API_URL + "api/educator/addSchedule", userDetail,{ headers: {...authHeader(),'Content-Type': 'application/json'},  });
+    return axios.post(API_URL + "api/educator/addSchedule", userDetail, { headers: { ...authHeader(), 'Content-Type': 'application/json' }, });
 }
 const MyCourse = () => {
     return axios.get(API_URL + "api/educator/addedCourses", { headers: { ...authHeader() }, });
 }
 const showAddedCourseSchedule = (courseTitle) => {
-    return axios.get(API_URL + `api/educator/showAddedCourseSchedule/${courseTitle}`,{headers: { ...authHeader() }, });
+    return axios.get(API_URL + `api/educator/showAddedCourseSchedule/${courseTitle}`, { headers: { ...authHeader() }, });
 }
 
 const EducatorService = {

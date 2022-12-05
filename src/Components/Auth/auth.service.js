@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://dreamlearn-capstone.herokuapp.com/";
+const API_URL = "https://dreamlearn-capstone.onrender.com/";
 
 const signup = async (name, username, email, password, role) => {
     await axios.post(`${API_URL}api/auth/signup`, {
