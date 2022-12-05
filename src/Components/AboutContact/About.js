@@ -3,12 +3,12 @@ import AboutProfile from "./AboutProfile";
 
 function About() {
   return (
-    <div className=" w-11/12 m-auto py-12 pb-2  select-none">
+    <div className=" w-11/12 m-auto py-8 pb-2  select-none">
       <h1 className="text-3xl px-20  opacity-4 shadow-md text-purple-900 inline-block">
         About Us
       </h1>
       <AboutProfile />
-      <p className="mt-3 px-20 pt-6 pb-5 text-purple-700 text-lg">
+      <p className="mt-7 px-20 pt-4 pb-5 text-purple-700 text-lg">
         We serve you a platform where, those who have the ability to teach musical
         instruments can enroll themselves as an Educator. Those who want to
         learn their dream instrument can enroll themselves as a learner and
