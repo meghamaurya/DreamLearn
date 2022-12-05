@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 const EducatorDropdown = () => {
 
     return (
-        <div className='z-10 pl-24 mt-6 text-lg  text-purple-900 shadow-md shadow-purple-300'>
+        <div className='z-10 pl-24 mt-4 text-lg  text-purple-900 shadow-md shadow-purple-300'>
             <ul className="flex ">
                 <li >
                     <Link to={'/addcourse'} className="font-medium hover:text-purple-700 pl-2 pr-2"

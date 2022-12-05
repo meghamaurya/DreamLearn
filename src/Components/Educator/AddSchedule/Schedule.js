@@ -88,9 +88,9 @@ export const Schedule = (props) => {
   return (
     <>
 
-      <div className='grid grid-cols-3 gap-5 m-auto'>
+      <div className='grid grid-cols-3 m-auto'>
 
-        <div className=" mt-2 text-start">
+        <div className=" text-start">
           <form
             autoComplete="off"
             className=" text-purple-900  bg-white rounded  flex flex-col content-center mb-4 "

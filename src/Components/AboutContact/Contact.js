@@ -9,17 +9,17 @@ import { BsFillPersonCheckFill } from 'react-icons/bs'
 function Contact() {
   return (
     <>
-      <div className="w-8/12 m-auto py-5">
+      <div className="w-8/12 m-auto py-7">
         <h1 className="text-3xl px-20 my-3 opacity-4 shadow-md text-purple-900 inline-block">
           Contact Us
         </h1>
       </div>
-      <div className="  text-center w-8/12 m-auto mb-4 h-auto mt-4 rounded-xl  overflow-hidden grid shadow-md gap-20  ">
+      <div className="  text-center w-8/12 m-auto h-auto mt-4 rounded-xl  overflow-hidden grid shadow-md gap-16 ">
         {
           ContactData.map(({ id, github, linkden, name, portfolio, role, email }) => {
             return (
               <div key={id} className='grid  rounded-xl shadow-md overflow-hidden '>
-                <div className="grid grid-cols-2 mb-3 mt-3  ">
+                <div className="grid grid-cols-2 mb-2 mt-3  ">
 
                   <div className=" self-center  ">
                     <p className="text-2xl font-bold text-purple-900 mb-1 ">{name}</p>
