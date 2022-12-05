@@ -24,7 +24,7 @@ const AboutProfile = () => {
                                     {/* <p>{name}</p> */}
                                     <p className='text-justify text-base px-2'>{aboutMe}</p>
                                 </div>
-                                <div className='flex flex-col'>
+                                <div className='flex flex-col mb-2'>
                                     <span className='text-left pl-4 font-semibold'>{name}</span>
                                     <span className='text-left pl-4 text-sm'>{role}</span>
                                 </div>

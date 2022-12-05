@@ -9,8 +9,8 @@ function About() {
       </h1>
       <AboutProfile />
       <p className="mt-3 px-20 pt-6 pb-5 text-purple-700 text-lg">
-        We serve you a platform. Where, who have the ability to teach musical
-        instruments can enroll themselves as an Educator. And those who want to
+        We serve you a platform where, those who have the ability to teach musical
+        instruments can enroll themselves as an Educator. Those who want to
         learn their dream instrument can enroll themselves as a learner and
         learn different INDIAN and WESTERN musical instruments with experienced
         Educators .{" "}
@@ -20,8 +20,8 @@ function About() {
         Why does this problem exist?{" "}
       </h2>
       <p className="mt-4  px-24 pt-4 pb-5 text-purple-700 text-lg">
-        The common cause is a shortage of music schools, Lack of time because of
-        busy schedules, and music school's fees are not affordable for everyone.
+        The common cause is a shortage of music schools, lack of time because of
+        busy schedules and music school's fees are not affordable for everyone.
       </p>
       <h2 className="text-3xl  text-purple-900 px-20 opacity-4 shadow-md mt-8 inline-block">
         Problem Statment
@@ -32,10 +32,10 @@ function About() {
         their dairy forever.
       </p>
       <h2 className="text-3xl  px-20 opacity-4 text-purple-900 shadow-md mt-8 inline-block">
-        Our Idea to build this Web App{" "}
+        Our idea to build this Web App{" "}
       </h2>
       <p className="mt-4  px-24 pt-4 pb-2 text-purple-700 text-lg">
-        A platform that takes all Instruments learning to one place, one on one
+        A platform that takes all instruments learning to one place, one on one
         online live classes, detailed theory explanation of instruments with
         notes availability. Live doubt clearing sessions.
       </p>
