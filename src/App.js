@@ -55,7 +55,10 @@ function App() {
         {learner ? <LearnerDropdown /> : ""}
         {educator ? <EducatorDropdown /> : ""}
         <Routes>
-          <Route exact path='/' element={<LandingPage />} />
+          {/* <Route exact path='/' element={<LandingPage />} /> */}
+          {educator ? <Route exact path='/' element={<EducatorRoute Component={EducatorHome} />} />
+            : learner ? <Route exact path='/' element={<LearnerRoute Component={LearnerHome} />} />
+              : <Route exact path='/' element={<LandingPage />} />}
           {/* <Route path='/signup' element={<SignUp />} /> */}
           <Route path='/signin' element={<SignIn learner={learner} educator={educator} />} />
           <Route path='/learner' element={<LearnerRoute Component={LearnerHome} />} />
